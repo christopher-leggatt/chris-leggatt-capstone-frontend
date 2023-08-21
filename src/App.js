@@ -1,17 +1,35 @@
-import './App.scss';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
+import "./App.scss";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import React, { useEffect } from "react";
+import Home from "./pages/Home/Home";
+import Shop from "./pages/Shop/Shop";
+import Stores from "./pages/Stores/Stores";
+import User from "./pages/User/User";
+import Checkout from "./pages/Checkout/Checkout";
 
 function App() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <div className="App">
       <BrowserRouter>
+      <Header />
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Shop />} />
+          <Route path="/products/:id" element={<Shop />} />
+          <Route path="/products/category/:category" element={<Shop />} />
+          <Route path="/stores" element={<Stores />} />
+          <Route path="/users" element={<User />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </BrowserRouter>
     </div>
   );
-}
+  }
 
 export default App;
