@@ -1,3 +1,8 @@
+@use './styles/partials/animations' as *;
+@use './styles/partials/font_face' as *;
+@use './styles/partials/mixins' as *;
+@use './styles/partials/variables' as *;
+
 .App {
   text-align: center;
 }

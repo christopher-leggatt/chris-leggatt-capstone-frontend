@@ -1,0 +1,126 @@
+// Typekit mixins
+
+@mixin typekit($type, $breakpoint) {
+  $typeSettings: (
+    page-header: (
+      mobile: (
+        font-size: 1.75rem,
+        line-height: 2.25rem,
+        font-weight: 600,
+      ),
+      tablet-desktop: (
+        font-size: 2rem,
+        line-height: 2.5rem,
+        font-weight: 600,
+      ),
+    ),
+    subheader: (
+      mobile: (
+        font-size: 1.25rem,
+        line-height: 1.75rem,
+        font-weight: 600,
+      ),
+      tablet-desktop: (
+        font-size: 1.5rem,
+        line-height: 2rem,
+        font-weight: 600,
+      ),
+    ),
+    labels-links-btns: (
+      mobile: (
+        font-size: 0.8125rem,
+        line-height: 1.25rem,
+      ),
+      tablet-desktop: (
+        font-size: 0.875rem,
+        line-height: 1.375rem,
+      ),
+    ),
+    table-header: (
+      mobile: (
+        font-size: 0.6875rem,
+        line-height: 1rem,
+      ),
+      tablet-desktop: (
+        font-size: 0.75rem,
+        line-height: 1.125rem,
+      ),
+    ),
+    body-large: (
+      mobile: (
+        font-size: 0.9375rem,
+        line-height: 1.625rem,
+      ),
+      tablet-desktop: (
+        font-size: 1rem,
+        line-height: 1.75rem,
+      ),
+    ),
+    body-medium: (
+      mobile: (
+        font-size: 0.8125rem,
+        line-height: 1.25rem,
+      ),
+      tablet-desktop: (
+        font-size: 0.875rem,
+        line-height: 1.375rem,
+      ),
+    ),
+    body-small: (
+      mobile: (
+        font-size: 0.6875rem,
+        line-height: 1rem,
+      ),
+      tablet-desktop: (
+        font-size: 0.75rem,
+        line-height: 1.125rem,
+      ),
+    ),
+  );
+
+  $styles: map-get($typeSettings, $type);
+  $selectedStyles: map-get($styles, $breakpoint);
+
+  font-weight: map-get($selectedStyles, "font-weight");
+  font-size: map-get($selectedStyles, "font-size");
+  line-height: map-get($selectedStyles, "line-height");
+}
+
+// Breakpoint mixins
+
+@mixin breakpoint($size) {
+  @if $size == tablet {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $size == desktop {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+// Positioning mixins
+
+@mixin positioning($type, $top, $right, $bottom, $left) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+@mixin centerer($pos, $value) {
+  position: $pos;
+  @if $value == y {
+    top: 50%;
+    transform: translateY(-50%);
+  } @else if $value == x {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if $value == center {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

@@ -1,0 +1,41 @@
+@use './mixins' as *;
+@use './font-face' as *;
+@use './variables' as *;
+
+a {
+    text-decoration: none;
+    color: inherit;   
+}
+a, button {
+    all: unset;
+    cursor: pointer;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+body,
+input,
+textarea,
+*,
+*::placeholder {
+    font-family: sans-serif;
+    color: #13182c;
+}
+
+li {
+    list-style: none;
+}
+
+textarea {
+    resize: none;
+}
