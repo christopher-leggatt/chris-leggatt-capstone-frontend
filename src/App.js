@@ -6,6 +6,10 @@ import Shop from "./pages/Shop/Shop";
 import Stores from "./pages/Stores/Stores";
 import User from "./pages/User/User";
 import Checkout from "./pages/Checkout/Checkout";
+import Header from "./components/common/Header/Header";
+import Footer from "./components/common/Footer/Footer";
+
+
 
 function App() {
   const { pathname } = useLocation();
@@ -27,6 +31,7 @@ function App() {
           <Route path="/users" element={<User />} />
           <Route path="/checkout" element={<Checkout />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   );
