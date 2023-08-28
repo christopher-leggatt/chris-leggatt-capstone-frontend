@@ -86,6 +86,18 @@ const shades = {
     900: "#310d0b",
   },
 
+  warning: {
+    100: "#f2ecd1",
+    200: "#e5d9a2",
+    300: "#d7c674",
+    400: "#cab345",
+    500: "#bda017",
+    600: "#978012",
+    700: "#71600e",
+    800: "#4c4009",
+    900: "#262005",
+  },
+
   success: {
     100: "#cfe8cf",
     200: "#9fd19f",
@@ -98,12 +110,6 @@ const shades = {
     900: "#031c03",
   },
 };
-
-// export const breakpoints = {
-//   values: { mobile: 320, md: 768, desktop: 1280 },
-// };
-
-// const breakpoints = createTheme({ breakpoints }).breakpoints;
 
 let theme = createTheme({
   breakpoints: {
@@ -158,6 +164,12 @@ let theme = createTheme({
       dark: shades.error[800],
       contrastText: "#fff",
     },
+    warning: {
+      main: shades.warning[500],
+      light: shades.warning[200],
+      dark: shades.warning[800],
+      contrastText: "#fff",
+    },
     success: {
       main: shades.success[500],
       light: shades.success[200],
@@ -168,7 +180,7 @@ let theme = createTheme({
   },
   typography: {
     fontFamily: ["Inter", "sans-serif"].join(","),
-    fontSize: 16,
+    fontSize: 13,
     h1: {
       fontWeight: 700,
       fontSize: "33px",

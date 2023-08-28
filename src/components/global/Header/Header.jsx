@@ -129,12 +129,35 @@ const Header = () => {
           ))}
         </Menu>
       </Box>
-      <figure component="figure" className="header__company-wrapper">
+      <Box
+        component="figure"
+        className="header__company-wrapper"
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          columnGap: { xs: "8px", md: "16px" },
+          color: (theme) => theme.palette.primary.contrastText,
+        }}
+      >
         <Link to="/" className="header__company-logo-link">
-          <Spa className="header__company-logo"></Spa>
+          <Spa
+            className="header__company-logo"
+            sx={{
+              height: { xs: "20px", md: "24px" },
+              width: { xs: "20px", md: "24px" },
+              fill: (theme) => theme.palette.secondary.main,
+            }}
+          ></Spa>
         </Link>
-        <h1 className="header__company-name">Convenient Cannabis</h1>
-      </figure>
+        <Typography
+          variant="subtitle2"
+          component="h2"
+          className="header__company-name"
+          color="inherit"
+        >
+          Convenient Cannabis
+        </Typography>
+      </Box>
 
       <Box
         className="header__navlinks"
@@ -196,24 +219,28 @@ const Header = () => {
           open={menuType === "user"}
           onClose={handleCloseMenu}
         >
-          <MenuItem component="article" className="user-menu__menu-item">
-            <Typography
-              variant="body1"
-              component="p"
-              className="user-menu__menu-item-text"
-            >
-              Sign-in/Register
-            </Typography>
-          </MenuItem>
-          <MenuItem component="article" className="user-menu__menu-item">
-            <Typography
-              variant="body1"
-              component="p"
-              className="user-menu__menu-item-text"
-            >
-              My Account
-            </Typography>
-          </MenuItem>
+          <Link to={"/users"} className="user-menu__menu-item">
+            <MenuItem component="article" className="user-menu__menu-item">
+              <Typography
+                variant="body1"
+                component="p"
+                className="user-menu__menu-item-text"
+              >
+                Sign-in/Register
+              </Typography>
+            </MenuItem>
+          </Link>
+          <Link to={"/users"} className="user-menu__menu-item">
+            <MenuItem component="article" className="user-menu__menu-item">
+              <Typography
+                variant="body1"
+                component="p"
+                className="user-menu__menu-item-text"
+              >
+                My Account
+              </Typography>
+            </MenuItem>
+          </Link>
         </Menu>
       </Box>
     </AppBar>

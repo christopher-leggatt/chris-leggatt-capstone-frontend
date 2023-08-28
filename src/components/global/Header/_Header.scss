@@ -1,56 +1,18 @@
 @use "../../../styles/partials/mixins" as *;
 @use "../../../styles/partials/variables" as *;
 
-.header {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  background-color: $header-bg;
-  color: $primary-text-light;
-  padding: 8px;
+.header {  
 
   .nav-menu {
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
-
-    
-    //     path {
-    //         fill: $icons-light;
-    //     }
-    // }
-
     &__menu-item-text {
-      @include typekit(body-copy, mobile);
       text-align: center;
     }
-  }
+  }  
 
-  &__company-wrapper {
+  &__company-logo-link {
     display: flex;
+    justify-content: center;
     align-items: center;
-    column-gap: 16px;
-  }
-
-  &__company-logo {
-    height: 36px;
-
-    path {
-      fill: $primary-text-light;
-    }
-  }
-
-  &__company-name {
-    @include typekit(page-header, mobile);
-    color: $primary-text-light;
-  }
-
-  &__navlinks {
-    display: flex;
-    color: $primary-text-light;
-    column-gap: 16px;
   }
 
   &__navlink-item {
@@ -58,10 +20,15 @@
   }
 
   &__navlink {
+    @include typekit(body-copy, mobile);
     color: inherit;
   }
 
   @include breakpoint(tablet) {
     padding: 24px;
+
+    &__navlink {
+      @include typekit(body-copy, tablet-desktop);
+    }
   }
 }
