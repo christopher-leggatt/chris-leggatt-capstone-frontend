@@ -1,20 +1,32 @@
-import { createTheme } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-export const shades = {
-  // Eucalyptus
+const shades = {
+  // Capstone green
   primary: {
-    100: "#d3efdb",
-    200: "#a7e0b8",
-    300: "#7bd094",
-    400: "#4fc171",
-    500: "#23b14d",
-    600: "#1c8e3e",
-    700: "#156a2e",
-    800: "#0e471f",
-    900: "#07230f",
+    100: "#ccd4ce",
+    200: "#99aa9d",
+    300: "#677f6c",
+    400: "#34553b",
+    500: "#012a0a",
+    600: "#012208",
+    700: "#011906",
+    800: "#001104",
+    900: "#000802",
   },
-  //Clay creek
+  // Capstone orange
   secondary: {
+    100: "#fdedd3",
+    200: "#fbdba7",
+    300: "#f9ca7b",
+    400: "#f7b84f",
+    500: "#f5a623",
+    600: "#c4851c",
+    700: "#936415",
+    800: "#62420e",
+    900: "#312107",
+  },
+  //Capstone tan
+  neutral: {
     100: "#e7e8dd",
     200: "#d0d1ba",
     300: "#b8bb98",
@@ -25,7 +37,7 @@ export const shades = {
     800: "#373821",
     900: "#1b1c11",
   },
-  // Pampas
+  // Capstone white
   light: {
     100: "#fcfbfb",
     200: "#f9f8f7",
@@ -37,7 +49,7 @@ export const shades = {
     800: "#605f5e",
     900: "#302f2f",
   },
-  // Gulf stream
+  // Capstone blue
   info: {
     100: "#e5f0f0",
     200: "#cce0e0",
@@ -49,7 +61,7 @@ export const shades = {
     800: "#334747",
     900: "#192424",
   },
-  //Outer space
+  //Capstone black
   dark: {
     100: "#d2d4d4",
     200: "#a6a9a9",
@@ -61,6 +73,7 @@ export const shades = {
     800: "#0d1010",
     900: "#060808",
   },
+  // Capstone red
   error: {
     100: "#fdd9d7",
     200: "#fbb4af",
@@ -72,16 +85,36 @@ export const shades = {
     800: "#621b16",
     900: "#310d0b",
   },
+
+  success: {
+    100: "#cfe8cf",
+    200: "#9fd19f",
+    300: "#70ba70",
+    400: "#40a340",
+    500: "#108c10",
+    600: "#0d700d",
+    700: "#0a540a",
+    800: "#063806",
+    900: "#031c03",
+  },
 };
 
-export const breakpoints = {
-  values: { mobile: 320, tablet: 768, desktop: 1280 },
-};
+// export const breakpoints = {
+//   values: { mobile: 320, md: 768, desktop: 1280 },
+// };
 
-const muiBreakpoints = createTheme({ breakpoints }).breakpoints;
+// const breakpoints = createTheme({ breakpoints }).breakpoints;
 
-export const theme = createTheme({
-  breakpoints: breakpoints,
+let theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 320,
+      md: 768,
+      lg: 1280,
+      xl: 1536,
+    },
+  },
   palette: {
     primary: {
       main: shades.primary[500],
@@ -93,6 +126,12 @@ export const theme = createTheme({
       main: shades.secondary[500],
       light: shades.secondary[200],
       dark: shades.secondary[800],
+      contrastText: "#fff",
+    },
+    neutral: {
+      main: shades.neutral[500],
+      light: shades.neutral[200],
+      dark: shades.neutral[800],
       contrastText: "#fff",
     },
     light: {
@@ -119,49 +158,44 @@ export const theme = createTheme({
       dark: shades.error[800],
       contrastText: "#fff",
     },
+    success: {
+      main: shades.success[500],
+      light: shades.success[200],
+      dark: shades.success[800],
+      contrastText: "#fff",
+    },
+    divider: shades.dark[200],
   },
   typography: {
-    fontFamily: ["Roboto", "sans-serif"].join(","),
+    fontFamily: ["Inter", "sans-serif"].join(","),
     fontSize: 16,
     h1: {
       fontWeight: 700,
-      fontSize: 24,
-      lineHeight: 32,
-      [muiBreakpoints.up("tablet")]: {
-        fontSize: 33,
-        lineHeight: 44,
-      },
+      fontSize: "33px",
+      lineHeight: 1.333,
     },
     subtitle1: {
       fontWeight: 700,
-      fontSize: 12,
-      lineHeight: 20,
+      fontSize: "12px",
+      lineHeight: 1.666,
     },
     subtitle2: {
-      fontWeight: 400,
-      fontSize: 13,
-      lineHeight: 18,
-      [muiBreakpoints.up("tablet")]: {
-        fontSize: 14,
-        lineHeight: 22,
-      },
+      fontWeight: 600,
+      fontSize: "14px",
+      lineHeight: 1.571,
     },
     body1: {
-      fontSize: 13,
-      lineHeight: 18,
-      [muiBreakpoints.up("tablet")]: {
-        fontSize: 14,
-        lineHeight: 22,
-      },
+      fontSize: "14px",
+      lineHeight: 1.571,
     },
     button: {
       fontWeight: 700,
-      fontSize: 10,
-      lineHeight: 20,
-      [muiBreakpoints.up("tablet")]: {
-        fontSize: 12,
-        lineHeight: 20,
-      },
+      fontSize: "12px",
+      lineHeight: 1.666,
     },
   },
 });
+
+theme = responsiveFontSizes(theme);
+
+export default theme;

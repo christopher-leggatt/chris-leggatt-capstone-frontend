@@ -1,79 +1,63 @@
+@use './variables' as *;
+
 // Typekit mixins
 
 @mixin typekit($type, $breakpoint) {
   $typeSettings: (
     page-header: (
       mobile: (
-        font-size: 1.75rem,
-        line-height: 2.25rem,
-        font-weight: 600,
+        font-size: 24px,
+        line-height: 32px,
+        font-weight: 700,
       ),
       tablet-desktop: (
-        font-size: 2rem,
-        line-height: 2.5rem,
-        font-weight: 600,
+        font-size: 33px,
+        line-height: 44px,
+        font-weight: 700,
+      ),
+    ),
+    section-header: (
+      mobile: (
+        font-size: 12px,
+        line-height: 20px,
+        font-weight: 700,
+      ),
+      tablet-desktop: (
+        font-size: 12px,
+        line-height: 20px,
+        font-weight: 700,
       ),
     ),
     subheader: (
       mobile: (
-        font-size: 1.25rem,
-        line-height: 1.75rem,
+        font-size: 13px,
+        line-height: 18px,
         font-weight: 600,
       ),
       tablet-desktop: (
-        font-size: 1.5rem,
-        line-height: 2rem,
+        font-size: 14px,
+        line-height: 22px,
         font-weight: 600,
       ),
     ),
     labels-links-btns: (
       mobile: (
-        font-size: 0.8125rem,
-        line-height: 1.25rem,
+        font-size: 10px,
+        line-height: 20px,
       ),
       tablet-desktop: (
-        font-size: 0.875rem,
-        line-height: 1.375rem,
+        font-size: 12px,
+        line-height: 20px,
       ),
     ),
-    table-header: (
+    body-copy: (
       mobile: (
-        font-size: 0.6875rem,
-        line-height: 1rem,
+        font-size: 13px,
+        line-height: 20px,
       ),
       tablet-desktop: (
-        font-size: 0.75rem,
-        line-height: 1.125rem,
-      ),
-    ),
-    body-large: (
-      mobile: (
-        font-size: 0.9375rem,
-        line-height: 1.625rem,
-      ),
-      tablet-desktop: (
-        font-size: 1rem,
-        line-height: 1.75rem,
-      ),
-    ),
-    body-medium: (
-      mobile: (
-        font-size: 0.8125rem,
-        line-height: 1.25rem,
-      ),
-      tablet-desktop: (
-        font-size: 0.875rem,
-        line-height: 1.375rem,
-      ),
-    ),
-    body-small: (
-      mobile: (
-        font-size: 0.6875rem,
-        line-height: 1rem,
-      ),
-      tablet-desktop: (
-        font-size: 0.75rem,
-        line-height: 1.125rem,
+        font-size: 14px,
+        line-height: 22px,
       ),
     ),
   );
@@ -90,11 +74,11 @@
 
 @mixin breakpoint($size) {
   @if $size == tablet {
-    @media (min-width: 768px) {
+    @media (min-width: 48rem) {
       @content;
     }
   } @else if $size == desktop {
-    @media (min-width: 1280px) {
+    @media (min-width: 80rem) {
       @content;
     }
   }
@@ -122,5 +106,16 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+// Combined vert-horiz padding mixins
+@mixin axial-padding($axis, $top-left, $bottom-right) {
+  @if $axis == x {
+    padding-left: $top-left;
+    padding-right: $bottom-right;
+  } @else if $axis == y {
+    padding-top: $top-left;
+    padding-bottom: $bottom-right;
   }
 }

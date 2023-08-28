@@ -6,22 +6,25 @@ import Shop from "./pages/Shop/Shop";
 import Stores from "./pages/Stores/Stores";
 import User from "./pages/User/User";
 import Checkout from "./pages/Checkout/Checkout";
-import Header from "./components/common/Header/Header";
-import Footer from "./components/common/Footer/Footer";
+import Header from "./components/global/Header/Header";
+import Footer from "./components/global/Footer/Footer";
 
-
-
-function App() {
+const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
 
+  return null;
+};
+
+function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header />
+      <ScrollToTop />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Shop />} />
@@ -35,6 +38,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-  }
+}
 
 export default App;

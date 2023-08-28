@@ -1,15 +1,21 @@
-// Eucalyptus
-$site-primary-color: #23b14d;
+$capstone-white: #fff;
+$primary-text-light: $capstone-white;
+$icons-light: $capstone-white;
 
-// Pampas
-$site-light-shades: #f0edea;
+$site-primary-color: #012a0a;
+$header-bg: #012a0a;
+
+$site-secondary-color: #f5a623;
+
+$site-light-base: #f0edea;
 
 // Gulf stream
 $site-light-accent: #7fb2b2;
 
 // Outer space
-$site-dark-shades: #202927;
-$primary-text: $site-dark-shades;
+$site-dark-base: #202927;
+$primary-text-dark: $site-dark-base;
+$primary-bg-dark: $site-dark-base;
 
 // Clay creek
 $site-dark-accent: #898d53;
@@ -18,7 +24,13 @@ $site-dark-accent: #898d53;
 $site-warning-color: #bda017;
 
 // Pomegranate
-$site-danger-color: #f44336;
+$site-error-color: #f44336;
+
+$site-success-color: #108c10;
+
+// Misc 
+
+$divider: #a6a9a9;
 
 ///////////////////////////////////
 
