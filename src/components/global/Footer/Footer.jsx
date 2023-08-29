@@ -54,19 +54,19 @@ const Footer = () => {
         <article className="footer__footer-card footer-card footer-card--social">
           <h2 className="footer-card__heading">Social</h2>
           <div className="footer-card__social-links-wrapper">
-            <a href="www.facebook.com" className="footer-card__social-link">
+            <a href="https://www.facebook.com" className="footer-card__social-link">
               <FacebookRounded
                 className="footer-card__social-link-icon"
                 sx={{ ...socialIconStyles }}
               />
             </a>
-            <a href="www.instagram.com" className="footer-card__social-link">
+            <a href="https://www.instagram.com" className="footer-card__social-link">
               <Instagram
                 className="footer-card__social-link-icon"
                 sx={{ ...socialIconStyles }}
               />
             </a>
-            <a href="www.twitter.com" className="footer-card__social-link">
+            <a href="https://www.twitter.com" className="footer-card__social-link">
               <Twitter
                 className="footer-card__social-link-icon"
                 sx={{ ...socialIconStyles }}
