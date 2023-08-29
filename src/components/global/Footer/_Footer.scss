@@ -1,2 +1,134 @@
-@use '../../../styles/partials/mixins' as *;
-@use '../../../styles/partials/variables' as *;
+@use "../../../styles/partials/mixins" as *;
+@use "../../../styles/partials/variables" as *;
+
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+  padding: 16px;
+  background-color: $capstone-tan;
+  color: $primary-text-dark;
+
+  &__social-copyright-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  .footer-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: break-word;
+    // word-break: break-all;
+
+    &__heading {
+      @include typekit(section-header, mobile);
+      @include axial-padding(y, 24px, 16px);
+    }
+
+    &__subheading {
+      @include typekit(subheader1, mobile);
+      @include axial-padding(y, 16px, 8px);
+    }
+
+    &__subheading-small {
+      @include typekit(subheader2, mobile);
+      padding-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    &__content,
+    &__email,
+    &__link {
+      @include typekit(body-copy, mobile);
+    }
+
+    &__email {
+      word-break: break-all;
+    }
+
+    &__stores-wrapper {
+      display: flex;
+      justify-content: center;
+      column-gap: 16px;
+    }
+
+    &__store-hours-wrapper {
+      flex-direction: column;
+    }
+
+    &__social-links-wrapper,
+    &__store-hours-wrapper {
+      display: flex;
+      column-gap: 16px;
+    }
+  }
+
+  @include breakpoint(tablet) {
+    flex-direction: row;
+    align-items: flex-start;
+    row-gap: unset;
+    column-gap: 24px;
+    padding: 24px;
+
+    &__social-copyright-card-wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      row-gap: 24px;
+      flex-grow: 1;
+    }
+
+    .footer-card {
+      width: calc((100vw - (24px * 5)) / 4);
+      justify-content: flex-start;
+      align-items: flex-start;
+      text-align: left;
+
+      &__heading {
+        @include typekit(section-header, tablet-desktop);
+        @include axial-padding(y, 48px, 36px);
+        text-align: left;
+      }
+
+      &__subheading {
+        @include typekit(subheader1, tablet-desktop);
+        @include axial-padding(y, 0, 16px);
+      }
+
+      &__subheading-small {
+        @include typekit(subheader2, tablet-desktop);
+        padding-bottom: 8px;
+      }
+
+      &__content,
+      &__email,
+      &__link {
+        @include typekit(body-copy, tablet-desktop);
+        text-align: left;
+      }
+
+      &__stores-wrapper {
+        flex-direction: column;
+        justify-content: center;
+        row-gap: 16px;
+        column-gap: unset;
+      }
+    }
+  }
+
+  @include breakpoint(desktop) {
+    @include axial-padding(x,130px,130px);
+
+    .footer-card {
+      width: calc((100vw - ((24px * 3) + 260px)) / 4);
+
+    }
+  }
+}

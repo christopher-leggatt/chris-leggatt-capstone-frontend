@@ -13,6 +13,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
+import { ReactComponent as LogoIcon } from '../../../assets/logo/convenient_cannabis_logo.svg';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ const Header = () => {
       component="header"
       className="header"
       sx={{
+        position: "static",
         width: "100%",
         display: "flex",
         flexDirection: "row",
@@ -140,23 +142,10 @@ const Header = () => {
         }}
       >
         <Link to="/" className="header__company-logo-link">
-          <Spa
-            className="header__company-logo"
-            sx={{
-              height: { xs: "20px", md: "24px" },
-              width: { xs: "20px", md: "24px" },
-              fill: (theme) => theme.palette.secondary.main,
-            }}
-          ></Spa>
-        </Link>
-        <Typography
-          variant="subtitle2"
-          component="h2"
-          className="header__company-name"
-          color="inherit"
-        >
-          Convenient Cannabis
-        </Typography>
+          <LogoIcon
+            className="header__company-logo"            
+          />
+        </Link>        
       </Box>
 
       <Box

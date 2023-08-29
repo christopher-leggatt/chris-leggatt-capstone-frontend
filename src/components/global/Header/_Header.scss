@@ -15,6 +15,11 @@
     align-items: center;
   }
 
+  &__company-logo {
+    height: 36px;
+    width: 172.5px;
+  }
+
   &__navlink-item {
     color: inherit;
   }
@@ -29,6 +34,11 @@
 
     &__navlink {
       @include typekit(body-copy, tablet-desktop);
+    }
+
+    &__company-logo {
+      height: 48px;
+      width: 230px;
     }
   }
 }
