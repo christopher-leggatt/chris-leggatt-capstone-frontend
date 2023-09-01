@@ -23,18 +23,20 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <ScrollToTop />
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/products" element={<Shop />} />
-          <Route path="/products/:id" element={<Shop />} />
-          <Route path="/products/category/:category" element={<Shop />} />
-          <Route path="/stores" element={<Stores />} />
-          <Route path="/users" element={<User />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Routes>
-        <Footer />
+        <ScrollToTop />
+        <main>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Shop />} />
+            <Route path="/products/:id" element={<Shop />} />
+            <Route path="/products/category/:category" element={<Shop />} />
+            <Route path="/stores" element={<Stores />} />
+            <Route path="/users" element={<User />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Routes>
+          <Footer />
+        </main>
       </BrowserRouter>
     </div>
   );

@@ -1,11 +1,13 @@
 import React from 'react';
 import './_Home.scss';
+import ProductCarousel from '../../components/BannerCarousel/BannerCarousel';
 
 const Home = () => {
   return (
-    <div>Home
+    <section className='home'>
+      <ProductCarousel />
       
-    </div>
+    </section>
   )
 }
 

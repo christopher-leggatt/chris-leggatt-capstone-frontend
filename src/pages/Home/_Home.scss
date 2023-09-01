@@ -1,2 +1,15 @@
 @use '../../styles/partials/mixins' as *;
 @use '../../styles/partials/variables' as *;
+
+.home {
+    height: 600px;
+    padding: 16px;
+
+    @include breakpoint(tablet) {
+        padding: 24px;
+    }
+
+    @include breakpoint(desktop) {
+        @include axial-padding(x, 130px, 130px);
+    }
+}
