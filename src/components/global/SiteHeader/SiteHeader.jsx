@@ -1,4 +1,4 @@
-import "./_Header.scss";
+import "./_SiteHeader.scss";
 import {
   IconButton,
   Menu,
@@ -8,24 +8,25 @@ import {
   AppBar,
   Box,
 } from "@mui/material";
-import { Spa, AccountCircle } from "@mui/icons-material";
+import { AccountCircle } from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import { ReactComponent as LogoIcon } from '../../../assets/logo/convenient_cannabis_logo.svg';
 
-const Header = () => {
+const SiteHeader = () => {
   const navigate = useNavigate();
-  const [menuType, setMenuType] = useState(null);
-  const [anchorEl, setAnchorEl] = useState({ nav: null, user: null });
+  const [anchorElNav, setAnchorElNav] = useState( null );
+  const [anchorElUser, setAnchorElUser] = useState( null );
+
 
   const theme = useTheme();
 
   const navMenuItems = [
     { page: "Home", path: "" },
     { page: "About Us", path: "about" },
-    { page: "Shop", path: "shop" },
+    { page: "Shop", path: "products" },
   ];
 
   const navLinks = [
@@ -33,19 +34,20 @@ const Header = () => {
     { page: "Sign-in/Register", path: "users" },
   ];
 
-  const handleOpenMenu = (event, type) => {
-    setMenuType(type);
-    setAnchorEl((prevState) => ({
-      ...prevState,
-      [type]: event.currentTarget,
-    }));
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseMenu = () => {
-    setMenuType(null);
-    setAnchorEl({ nav: null, user: null });
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
   };
 
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
   return (
     <AppBar
       component="header"
@@ -78,7 +80,7 @@ const Header = () => {
           aria-label="navigation menu"
           aria-controls="menu-appbar"
           aria-haspopup="true"
-          onClick={(e) => handleOpenMenu(e, "nav")}
+          onClick={handleOpenNavMenu}
         >
           <MenuIcon
             className="nav-menu__menu-icon"
@@ -93,7 +95,7 @@ const Header = () => {
         <Menu
           className="nav-menu__menu"
           id="menu-appbar"
-          anchorEl={anchorEl.nav}
+          anchorEl={anchorElNav}
           anchorOrigin={{
             vertical: "top",
             horizontal: "left",
@@ -103,8 +105,8 @@ const Header = () => {
             vertical: "top",
             horizontal: "left",
           }}
-          open={menuType === "nav"}
-          onClose={handleCloseMenu}
+          open={Boolean(anchorElNav)}
+          onClose={handleCloseNavMenu}
           sx={{
             ":last-child": {
               display: "none",
@@ -116,7 +118,7 @@ const Header = () => {
               to={`/${item.path}`}
               className="nav-menu__menu-item-link"
               key={item.page}
-              onClick={handleCloseMenu}
+              onClick={handleCloseNavMenu}
             >
               <MenuItem component="article" className="nav-menu__menu-item">
                 <Typography
@@ -179,10 +181,10 @@ const Header = () => {
         {" "}
         <IconButton
           className="user-menu__menu-btn"
-          aria-label="user menu"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={(e) => handleOpenMenu(e, "user")}
+          // aria-label="user menu"
+          // aria-controls="menu-appbar"
+          // aria-haspopup="true"
+          onClick={handleOpenUserMenu}
         >
           <AccountCircle
             className="user-menu__menu-icon"
@@ -195,7 +197,7 @@ const Header = () => {
         </IconButton>
         <Menu
           id="menu-appbar"
-          anchorEl={anchorEl.user}
+          anchorEl={anchorElUser}
           anchorOrigin={{
             vertical: "top",
             horizontal: "right",
@@ -205,8 +207,8 @@ const Header = () => {
             vertical: "top",
             horizontal: "right",
           }}
-          open={menuType === "user"}
-          onClose={handleCloseMenu}
+          open={Boolean(anchorElUser)}
+          onClose={handleCloseUserMenu}
         >
           <Link to={"/users"} className="user-menu__menu-item">
             <MenuItem component="article" className="user-menu__menu-item">
@@ -236,4 +238,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default SiteHeader;

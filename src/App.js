@@ -6,7 +6,7 @@ import Shop from "./pages/Shop/Shop";
 import Stores from "./pages/Stores/Stores";
 import User from "./pages/User/User";
 import Checkout from "./pages/Checkout/Checkout";
-import Header from "./components/global/Header/Header";
+import SiteHeader from "./components/global/SiteHeader/SiteHeader";
 import Footer from "./components/global/Footer/Footer";
 
 const ScrollToTop = () => {
@@ -25,7 +25,7 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <main>
-          <Header />
+          <SiteHeader />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Shop />} />

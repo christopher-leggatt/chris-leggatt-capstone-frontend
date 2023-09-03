@@ -1,12 +1,12 @@
-import './_Shop.scss';
-
 import React from 'react';
+import ShopHeader from '../../components/ShopHeader/ShopHeader';
 
 const Shop = () => {
   return (
-    <div>
-      
-    </div>
+    <section className='shop'>
+      <ShopHeader />
+            
+    </section>
   )
 }
 
