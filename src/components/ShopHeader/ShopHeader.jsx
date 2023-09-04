@@ -1,10 +1,6 @@
 import "./_ShopHeader.scss";
 import {
-  IconButton,
-  Menu,
-  MenuItem,
-  Typography,
-  Theme,
+  IconButton,  
   AppBar,
   Box,
 } from "@mui/material";
