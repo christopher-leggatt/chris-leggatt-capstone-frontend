@@ -1,17 +1,28 @@
 import "./_ShopHeader.scss";
+import { IconButton, AppBar, Box, Badge } from "@mui/material";
+// import MenuIcon from "@mui/icons-material/Menu";
 import {
-  IconButton,  
-  AppBar,
-  Box,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+  PersonOutline,
+  ShoppingBagOutlined,
+  MenuOutlined,
+  Menu,
+} from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Searchbar from "../Searchbar/Searchbar";
+import CartDrawer from "../CartDrawer/CartDrawer";
 import ShopDrawer from "../ShopDrawer/ShopDrawer";
+import { useDispatch, useSelector } from "react-redux";
+import { setIsCartOpen } from "../../state";
 
 const ShopHeader = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const theme = useTheme();
+  const cart = useSelector((state) => state.cart.cart);
+  const isCartOpen = useSelector((state) => state.cart.isCartOpen);
+
   const [drawerState, setDrawerState] = useState({
     left: false,
     right: false,
@@ -29,8 +40,6 @@ const ShopHeader = () => {
       [anchor]: boolean,
     }));
   };
-  const navigate = useNavigate();
-  const theme = useTheme();
 
   const navLinks = [
     { page: "Home", path: "" },
@@ -68,7 +77,7 @@ const ShopHeader = () => {
           alignItems: "center",
         }}
       >
-        <MenuIcon
+        <Menu
           className="nav-menu__menu-icon"
           sx={{
             height: { xs: "20px", md: "24px" },
@@ -77,7 +86,6 @@ const ShopHeader = () => {
           }}
         />
       </IconButton>
-
       {drawerState.left && (
         <ShopDrawer
           navLinks={navLinks}
@@ -104,8 +112,49 @@ const ShopHeader = () => {
           );
         })}
       </Box>
+      <Box
+        className="shop-header__search-cart-wrapper"
+        sx={{
+          display: "flex",
+        }}
+      >
+        <Searchbar />
+        <Badge
+          badgeContent={cart.length}
+          invisible={cart.length === 0}
+          sx={{
+            "& .MuiBadge-badge": {
+              color: theme.palette.success.main,
+              right: 5,
+              top: 5,
+              px: 4,
+              height: "14px",
+              minWidth: "13px",
+            },
+          }}
+        >
+          <IconButton
+            className="shop-header__cart-btn"
+            aria-label="cart button"
+            aria-controls="cart-drawer"
+            aria-haspopup="true"
+            // onClick={() => dispatch(setIsCartOpen({}))}
+            onClick={() => dispatch(setIsCartOpen())}
+            variant={theme.typography.button}
 
-      <Searchbar />
+            sx={{
+              // display: { xs: "flex", md: "none" },
+              justifyContent: "center",
+              alignItems: "center",
+              color: theme.palette.secondary.contrastText,
+              padding: "4px 8px",
+            }}
+          >
+            <ShoppingBagOutlined />
+          </IconButton>
+        </Badge>
+      </Box>
+      {isCartOpen && <CartDrawer />}
     </AppBar>
   );
 };

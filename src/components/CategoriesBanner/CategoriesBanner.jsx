@@ -57,7 +57,7 @@ const CategoriesBanner = ({ chunkedCategory }) => {
               <Box className="categories-card__text-wrapper">
                 <Typography
                   variant="subHeaderExtraSmall"
-                  component="h4"
+                  // component="h4"
                   sx={{
                     color: (theme) => theme.palette.dark.light,
                     textTransform: "uppercase",
@@ -67,7 +67,7 @@ const CategoriesBanner = ({ chunkedCategory }) => {
                 </Typography>
                 <Typography
                   variant="subHeaderMedium"
-                  component="h3"
+                  // component="h3"
                   className="categories-card__name-text"
                   sx={{
                     textTransform: "capitalize",

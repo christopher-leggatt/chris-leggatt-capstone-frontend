@@ -39,7 +39,7 @@ const ShopDrawer = ({ navLinks, anchorDir, drawerState, toggleDrawer }) => {
   );
 
   return (
-    <div>
+    // <div>
       <Drawer
         variant="temporary"
         anchor={anchorDir}
@@ -48,7 +48,7 @@ const ShopDrawer = ({ navLinks, anchorDir, drawerState, toggleDrawer }) => {
       >
         {list(anchorDir)}
       </Drawer>
-    </div>
+    // </div>
   );
 };
 
