@@ -57,7 +57,7 @@ const shades = {
   },
 };
 
-let theme = createTheme({
+let capstoneTheme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
@@ -175,6 +175,6 @@ let theme = createTheme({
   },
 });
 
-// theme = responsiveFontSizes(theme);
+const theme = responsiveFontSizes(capstoneTheme);
 
 export default theme;
