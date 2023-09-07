@@ -2,9 +2,7 @@ import "./_ShopHeader.scss";
 import { IconButton, AppBar, Box, Badge } from "@mui/material";
 // import MenuIcon from "@mui/icons-material/Menu";
 import {
-  PersonOutline,
   ShoppingBagOutlined,
-  MenuOutlined,
   Menu,
 } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
@@ -143,7 +141,6 @@ const ShopHeader = () => {
             variant={theme.typography.button}
 
             sx={{
-              // display: { xs: "flex", md: "none" },
               justifyContent: "center",
               alignItems: "center",
               color: theme.palette.secondary.contrastText,
