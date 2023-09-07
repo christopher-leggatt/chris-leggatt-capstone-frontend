@@ -7,9 +7,10 @@ import theme from "./styles/themes/theme";
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from './state';
+import productsReducer from './store';
 
 const store = configureStore({
-  reducer: { cart: cartReducer },
+  reducer: { cart: cartReducer, products: productsReducer },
 });
 
 

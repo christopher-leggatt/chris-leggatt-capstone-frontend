@@ -1,79 +1,146 @@
-import './_Product.scss';
+import "./_Product.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
-import { addToCart } from "../state";
+import { Add, Remove } from "@mui/icons-material";
+import { addToCart } from "../../state";
 import { useNavigate } from "react-router-dom";
 
-const Product = ({ product, width }) => {
+const Product = ({ product }) => {
+  const theme = useTheme();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [count, setCount] = useState(1);
   const [isHovered, setIsHovered] = useState(false);
-  const { palette } = useTheme();
 
-  const { category, price, name, image_url, id } = product;  
+  const { price, name, image_url, id } = product;
 
   return (
-    <Box width={width}>
-      <Box
-        position="relative"
-        onMouseOver={() => setIsHovered(true)}
-        onMouseOut={() => setIsHovered(false)}
-      >
+    <Box
+      width={250}
+      height={{ xs: "auto", md: 350 }}
+      onMouseOver={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
+      sx={{
+        flexDirection: "column",
+        justifyContent: "space-between",
+        transition: "0.3s",
+        "&:hover": {
+          boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)",
+          transform: "translateY(-5px)",
+        },
+      }}
+    >
+      <Box position="relative">
         <img
+          className="product__image"
           alt={name}
-          width="300px"
-          height="400px"
+          width="100%"
+          height="250px"
           src={`${image_url}`}
           onClick={() => navigate(`/products/${id}`)}
-          style={{ cursor: "pointer" }}
         />
         <Box
-          display={isHovered ? "block" : "none"}
-          position="absolute"
-          bottom="10%"
-          left="0"
-          width="100%"
-          padding="0 5%"
+          className="product__hover-controls"
+          display={isHovered ? "flex" : "none"}
+          flexDirection="row"
+          alignItems="center"
+          justifyContent={{ xs: "flex-start", md: "space-between" }}
+          sx={{
+            position: "absolute",
+            bottom: { xs: "16px", md: "24px" },
+            left: { xs: "16px", md: "24px" },
+            right: { xs: "16px", md: "24px" },
+            gap: { xs: "16px", md: "24px" },
+          }}
         >
-          <Box display="flex" justifyContent="space-between">
-            <Box
-              display="flex"
-              alignItems="center"
-              backgroundColor={palette.neutral.light}
-              borderRadius="3px"
+          <Box
+            className="product__quantity-controls"
+            display="flex"
+            alignItems="center"
+            sx={{
+              border: `1.5px solid ${theme.palette.divider}`,
+              borderRadius: "20px",
+              backgroundColor: "#fff",
+              opacity: 0.8,
+            }}
+          >
+            <IconButton
+              className=""
+              size="small"
+              onClick={() => setCount(Math.max(count - 1, 1))}
             >
-              <IconButton onClick={() => setCount(Math.max(count - 1, 1))}>
-                <RemoveIcon />
-              </IconButton>
-              <Typography color={palette.light.contrastText}>{count}</Typography>
-              <IconButton onClick={() => setCount(count + 1)}>
-                <AddIcon />
-              </IconButton>
-            </Box>
-            <Button
-              onClick={() => {
-                dispatch(addToCart({ item: { ...product, count } }));
-              }}
-              sx={{ backgroundColor: palette.primary.main, color: palette.primary.contrastText }}
+              <Remove />
+            </IconButton>
+            <Typography className="product__count">{count}</Typography>
+            <IconButton
+              className=""
+              size="small"
+              onClick={() => setCount(count + 1)}
             >
-              Add to Cart
-            </Button>
+              <Add />
+            </IconButton>
           </Box>
+          <Button
+            className="product__add-btn"
+            variant="contained"
+            startIcon={<Add />}
+            color="primary"
+            size="small"
+            onClick={() =>
+              dispatch(addToCart({ product: { ...product, count } }))
+            }
+            sx={{
+              opacity: 0.8,
+            }}
+          >
+            Add to Cart
+          </Button>
         </Box>
       </Box>
-
-      <Box mt="3px">
-        <Typography variant="subtitle2" color={palette.neutral.dark}>
-          {category
-            .replace(/([A-Z])/g, " $1")
-            .replace(/^./, (str) => str.toUpperCase())}
+      <Box
+        className="product__details"
+        display="flex"
+        flexDirection="row"
+        justifyContent="space-between"
+        sx={{
+          gap: { xs: "16px", md: "24px" },
+          padding: { xs: "16px", md: "24px" },
+        }}
+      >
+        <Box
+          className=""
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
+          <Typography
+            className="product__name"
+            fontWeight="bold"
+            variant="bodyCopyRegular"
+            sx={{
+              display: "-webkit-box",
+              overflow: "hidden",
+              WebkitBoxOrient: "vertical",
+              WebkitLineClamp: 2
+            }}          >
+            {product.name}
+          </Typography>
+          <Typography className="product__brand" variant="bodyCopyAlt">
+            {product.brand}
+          </Typography>
+        </Box>
+        <Typography
+          className="product__price"
+          fontWeight="bold"
+          sx={{
+            alignSelf: "center",
+          }}
+        >
+          ${price}
         </Typography>
-        <Typography>{name}</Typography>
-        <Typography fontWeight="bold">${price}</Typography>
       </Box>
     </Box>
   );

@@ -1,85 +1,137 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import api from "./api";
 
+const initialState = {
+  products: [],
+};
+
 // Thunks
 
-export const fetchProducts = createAsyncThunk(
-  "products/fetchProducts",
+export const getProducts = createAsyncThunk(
+  "products/getProducts",
   async () => {
-    const response = await api.get("/products");
-    return response.data;
+    try {
+      const response = await api.get("/products");
+      const { data } = response;
+      console.log(response.data);
+      // return response.data;
+      return data;
+
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      throw error;
+    }
   }
 );
 
-export const fetchCategorizedProducts = createAsyncThunk(
-  "products/fetchCategorizedProducts",
+export const getCategorizedProducts = createAsyncThunk(
+  "products/getCategorizedProducts",
+
   async (category) => {
-    const response = await api.get(`/products/category/${category}`);
-    return response.data;
+    try {
+      const response = await api.get(`/products/category/${category}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      throw error;
+    }
   }
 );
 
-export const fetchProductItem = createAsyncThunk(
-  "products/fetchProductItem",
+export const getProductItem = createAsyncThunk(
+  "products/getProductItem",
+
   async (id) => {
-    const response = await api.get(`/products/${id}`);
-    return response.data;
+    try {
+      const response = await api.get(`/products/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      throw error;
+    }
   }
 );
 
 export const addProduct = createAsyncThunk(
   "products/addProduct",
+
   async (product) => {
-    const response = await api.post("/products", product);
-    return response.data;
+    try {
+      const response = await api.post("/products", product);
+      return response.data;
+    } catch (error) {
+      console.error("Error adding products:", error);
+      throw error;
+    }
   }
 );
 
 export const editProduct = createAsyncThunk(
   "products/editProduct",
+
   async ({ id, data }) => {
-    const response = await api.put(`/products/${id}`, data);
-    return response.data;
+    try {
+      const response = await api.put(`/products/${id}`, data);
+      return response.data;
+    } catch (error) {
+      console.error("Error editing products:", error);
+      throw error;
+    }
   }
 );
 
 export const deleteProduct = createAsyncThunk(
   "products/deleteProduct",
+
   async (id) => {
-    await api.delete(`/products/${id}`);
-    return id;
+    try {
+      await api.delete(`/products/${id}`);
+      return id;
+    } catch (error) {
+      console.error("Error deleting products:", error);
+      throw error;
+    }
   }
 );
 
 const productsSlice = createSlice({
   name: "products",
-  initialState: [],
+  // initialState: { products: [] },
+  initialState,
   reducers: {},
   extraReducers: {
-    [fetchProducts.fulfilled]: (state, action) => {
-      return action.payload;
+    [getProducts.fulfilled]: (state, action) => {
+      state.products = action.payload;
+      // return action.payload;
     },
-    [fetchCategorizedProducts.fulfilled]: (state, action) => {
-      return action.payload;
+    [getCategorizedProducts.fulfilled]: (state, action) => {
+      state = action.payload;
+      // return action.payload;
     },
-    [fetchProductItem.fulfilled]: (state, action) => {
-        return action.payload;
-      },
+    [getProductItem.fulfilled]: (state, action) => {
+      state = action.payload;
+      // return action.payload;
+    },
     [addProduct.fulfilled]: (state, action) => {
       state.push(action.payload);
+      // return action.payload;
     },
     [editProduct.fulfilled]: (state, action) => {
-        const index = state.findIndex(product => product.id === action.payload.id);
-        if (index !== -1) {
-            state[index] = action.payload;
-          }
-      },
-      [deleteProduct.fulfilled]: (state, action) => {
-        const index = state.findIndex(product => product.id === action.payload);
-        if (index !== -1) {
-          state.splice(index, 1);
-        }
-      },
+      const index = state.findIndex(
+        (product) => product.id === action.payload.id
+      );
+      if (index !== -1) {
+        state[index] = action.payload;
+      }
+      // return action.payload;
+    },
+    [deleteProduct.fulfilled]: (state, action) => {
+      const index = state.products.findIndex((product) => product.id === action.payload);
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
+      // return action.payload;
+    },
   },
 });
 

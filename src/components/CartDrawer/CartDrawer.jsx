@@ -43,8 +43,8 @@ const CartDrawer = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart.cart);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
-  const totalPrice = cart.reduce((total, item) => {
-    return total + item.count * item.price;
+  const totalPrice = cart.reduce((total, product) => {
+    return total + product.count * product.price;
   }, 0);
 
   const cartTest = [
@@ -52,21 +52,21 @@ const CartDrawer = () => {
       id: 1,
       name: "Lemon Haze Disposable",
       brand: "Test Co.",
-      url: "http://localhost:5050/images/products/lemon_haze_disposable.jpg",
+      url: "http://localhost:5050/images/products/lemon_haze_disposable_vape_pen.jpg",
       price: 25.0,
     },
     {
       id: 2,
       name: "Lemon Haze Disposable",
       brand: "Test Co.",
-      url: "http://localhost:5050/images/products/lemon_haze_disposable.jpg",
+      url: "http://localhost:5050/images/products/lemon_haze_disposable_vape_pen.jpg",
       price: 25.0,
     },
     {
       id: 3,
       name: "Lemon Haze Disposable",
       brand: "Test Co.",
-      url: "http://localhost:5050/images/products/lemon_haze_disposable.jpg",
+      url: "http://localhost:5050/images/products/lemon_haze_disposable_vape_pen.jpg",
       price: 25.0,
     },
   ];
@@ -157,10 +157,10 @@ const CartDrawer = () => {
         className="cart-drawer__list"
         sx={{ px: { xs: "16px", md: "24px" } }}
       >
-        {cartTest.map((item) => (
+        {cartTest.map((product) => (
           <ListItem
             className="cart-drawer__list-item list-item"
-            key={`${item.name}-${item.id}`}
+            key={`${product.name}-${product.id}`}
             divider
             sx={{
               p: 0,
@@ -174,8 +174,8 @@ const CartDrawer = () => {
             >
               <Avatar
                 className="list-item__avatar-image"
-                alt={item?.name}
-                src={item.url}
+                alt={product?.name}
+                src={product.url}
                 variant="square"
               />
             </ListItemAvatar>
@@ -191,12 +191,12 @@ const CartDrawer = () => {
                     fontWeight="bold"
                     variant="bodyCopyRegular"
                   >
-                    {item.name}
+                    {product.name}
                   </Typography>
                   <IconButton
                     className="list-item__remove-btn"
                     size="small"
-                    onClick={() => dispatch(removeFromCart({ id: item.id }))}
+                    onClick={() => dispatch(removeFromCart({ id: product.id }))}
                   >
                     <Close />
                   </IconButton>
@@ -208,24 +208,24 @@ const CartDrawer = () => {
                     className="list-item__item-brand"
                     variant="bodyCopyAlt"
                   >
-                    {item.brand}
+                    {product.brand}
                   </Typography>
                   <FlexBox className="list-item__item-actions" m="8px 0">
                     <ItemQuantityBox lassName="list-item__quantity-wrapper">
                       <IconButton
                         className="list-item__decrease-btn"
-                        onClick={() => dispatch(decreaseCount({ id: item.id }))}
+                        onClick={() => dispatch(decreaseCount({ id: product.id }))}
                         size="small"
                       >
                         <Remove />
                       </IconButton>
                       <Typography className="list-item__quantity">
-                        {item.count}
+                        {product.count}
                       </Typography>
                       <IconButton
                         className="list-item__increase-btn"
                         size="small"
-                        onClick={() => dispatch(increaseCount({ id: item.id }))}
+                        onClick={() => dispatch(increaseCount({ id: product.id }))}
                       >
                         <Add />
                       </IconButton>
@@ -234,7 +234,7 @@ const CartDrawer = () => {
                       className="list-item__item-price"
                       fontWeight="bold"
                     >
-                      ${item.price}
+                      ${product.price}
                     </Typography>
                   </FlexBox>
                 </>

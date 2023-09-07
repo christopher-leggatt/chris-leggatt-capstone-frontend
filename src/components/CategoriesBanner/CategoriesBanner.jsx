@@ -54,7 +54,10 @@ const CategoriesBanner = ({ chunkedCategory }) => {
                 alignItems: "flex-start",
               }}
             >
-              <Box className="categories-card__text-wrapper">
+              <Box className="categories-card__text-wrapper" sx={{
+                display: "flex",
+                flexDirection: "column",
+              }} >
                 <Typography
                   variant="subHeaderExtraSmall"
                   // component="h4"
@@ -67,7 +70,6 @@ const CategoriesBanner = ({ chunkedCategory }) => {
                 </Typography>
                 <Typography
                   variant="subHeaderMedium"
-                  // component="h3"
                   className="categories-card__name-text"
                   sx={{
                     textTransform: "capitalize",
@@ -98,7 +100,7 @@ const CategoriesBanner = ({ chunkedCategory }) => {
       elevation={0}
       component="section"
       className="categories-banner"
-      sx={{ paddingTop: "16px", paddingBottom: "16px", overflow: "visible"}}
+      sx={{ paddingTop: "16px", paddingBottom: "16px", overflow: "hidden", px: "8px" }}
     >
       <Grid container spacing={2} className="categories-banner__grid"  >
         {chunkedCategory.map((item, index) => (
@@ -108,7 +110,7 @@ const CategoriesBanner = ({ chunkedCategory }) => {
             sm={6}
             md={3}
             key={`categoryItem_${index}`}
-            className="categories-banner__grid-item"
+            className="categories-banner__grid-item"            
           >
             <CategoryCard
               name={item.name}
