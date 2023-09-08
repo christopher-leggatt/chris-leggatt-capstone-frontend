@@ -1,10 +1,6 @@
 import "./_ShopHeader.scss";
 import { IconButton, AppBar, Box, Badge } from "@mui/material";
-// import MenuIcon from "@mui/icons-material/Menu";
-import {
-  ShoppingBagOutlined,
-  Menu,
-} from "@mui/icons-material";
+import { ShoppingBagOutlined, Menu } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
@@ -117,39 +113,28 @@ const ShopHeader = () => {
         }}
       >
         <Searchbar />
-        <Badge
-          badgeContent={cart.length}
-          invisible={cart.length === 0}
+        <IconButton
+          className="shop-header__cart-btn"
+          aria-label="cart button"
+          aria-controls="cart-drawer"
+          aria-haspopup="true"
+          onClick={() => dispatch(setIsCartOpen())}
+          variant={theme.typography.button}
           sx={{
-            "& .MuiBadge-badge": {
-              color: theme.palette.success.main,
-              right: 5,
-              top: 5,
-              px: 4,
-              height: "14px",
-              minWidth: "13px",
-            },
+            justifyContent: "center",
+            alignItems: "center",
+            color: theme.palette.secondary.contrastText,
+            padding: "4px 8px",
           }}
         >
-          <IconButton
-            className="shop-header__cart-btn"
-            aria-label="cart button"
-            aria-controls="cart-drawer"
-            aria-haspopup="true"
-            // onClick={() => dispatch(setIsCartOpen({}))}
-            onClick={() => dispatch(setIsCartOpen())}
-            variant={theme.typography.button}
-
-            sx={{
-              justifyContent: "center",
-              alignItems: "center",
-              color: theme.palette.secondary.contrastText,
-              padding: "4px 8px",
-            }}
+          <Badge
+            badgeContent={cart.length}
+            invisible={cart.length === 0}
+            color="error"
           >
             <ShoppingBagOutlined />
-          </IconButton>
-        </Badge>
+          </Badge>
+        </IconButton>
       </Box>
       {isCartOpen && <CartDrawer />}
     </AppBar>

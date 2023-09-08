@@ -3,14 +3,23 @@ import React from "react";
 import ShopHeader from "../../components/ShopHeader/ShopHeader";
 import CategoriesCarousel from "../../components/CategoriesCarousel/CategoriesCarousel";
 import ProductList from "../../components/ProductList/ProductList";
+import ProductDetails from "../ProductDetails/ProductDetails";
+import { useParams } from "react-router-dom";
 
 const Shop = () => {
+
+  const { productId } = useParams();
   return (
     <section className="shop">
       <ShopHeader />
-      <CategoriesCarousel />
-      <ProductList />
-      <div className="shop__carousel-staff-picks"></div>
+      {productId ? (
+        <ProductDetails />
+      ) : (
+        <>
+          <CategoriesCarousel />
+          <ProductList />
+        </>
+      )}
     </section>
   );
 };

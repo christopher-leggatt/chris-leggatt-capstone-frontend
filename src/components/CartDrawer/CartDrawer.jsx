@@ -30,6 +30,7 @@ import {
   CheckoutButton,
   ItemQuantityBox,
 } from "./CartDrawerStyles";
+import { formatPrice } from "../../utils";
 
 const FlexBox = styled(Box)`
   display: flex;
@@ -44,32 +45,8 @@ const CartDrawer = () => {
   const cart = useSelector((state) => state.cart.cart);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
   const totalPrice = cart.reduce((total, product) => {
-    return total + product.count * product.price;
+    return formatPrice(total + product.count * product.price);
   }, 0);
-
-  const cartTest = [
-    {
-      id: 1,
-      name: "Lemon Haze Disposable",
-      brand: "Test Co.",
-      url: "http://localhost:5050/images/products/lemon_haze_disposable_vape_pen.jpg",
-      price: 25.0,
-    },
-    {
-      id: 2,
-      name: "Lemon Haze Disposable",
-      brand: "Test Co.",
-      url: "http://localhost:5050/images/products/lemon_haze_disposable_vape_pen.jpg",
-      price: 25.0,
-    },
-    {
-      id: 3,
-      name: "Lemon Haze Disposable",
-      brand: "Test Co.",
-      url: "http://localhost:5050/images/products/lemon_haze_disposable_vape_pen.jpg",
-      price: 25.0,
-    },
-  ];
 
   const list = (anchor) => (
     <Box
@@ -106,7 +83,7 @@ const CartDrawer = () => {
             variant="subHeaderExtraSmall"
             className="cart-drawer__subheading"
           >
-            Subtotal: ${totalPrice}
+            Subtotal: {totalPrice}
           </Typography>
         </StyledFlexBox>
         <Button
@@ -157,7 +134,7 @@ const CartDrawer = () => {
         className="cart-drawer__list"
         sx={{ px: { xs: "16px", md: "24px" } }}
       >
-        {cartTest.map((product) => (
+        {cart.map((product) => (
           <ListItem
             className="cart-drawer__list-item list-item"
             key={`${product.name}-${product.id}`}
@@ -175,7 +152,7 @@ const CartDrawer = () => {
               <Avatar
                 className="list-item__avatar-image"
                 alt={product?.name}
-                src={product.url}
+                src={product.image_url}
                 variant="square"
               />
             </ListItemAvatar>
@@ -234,7 +211,7 @@ const CartDrawer = () => {
                       className="list-item__item-price"
                       fontWeight="bold"
                     >
-                      ${product.price}
+                      {formatPrice(product.price)}
                     </Typography>
                   </FlexBox>
                 </>

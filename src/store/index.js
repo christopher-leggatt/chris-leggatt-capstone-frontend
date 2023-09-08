@@ -3,6 +3,8 @@ import api from "./api";
 
 const initialState = {
   products: [],
+  categorizedProducts: [],
+  currentProduct: null,
 };
 
 // Thunks
@@ -38,13 +40,14 @@ export const getCategorizedProducts = createAsyncThunk(
   }
 );
 
-export const getProductItem = createAsyncThunk(
-  "products/getProductItem",
+export const getCurrentProduct = createAsyncThunk(
+  "products/getCurrentProduct",
 
   async (id) => {
     try {
       const response = await api.get(`/products/${id}`);
-      return response.data;
+      const { data } = response;
+      return data;
     } catch (error) {
       console.error("Error fetching products:", error);
       throw error;
@@ -105,11 +108,11 @@ const productsSlice = createSlice({
       // return action.payload;
     },
     [getCategorizedProducts.fulfilled]: (state, action) => {
-      state = action.payload;
+      state.categorizedProducts = action.payload;
       // return action.payload;
     },
-    [getProductItem.fulfilled]: (state, action) => {
-      state = action.payload;
+    [getCurrentProduct.fulfilled]: (state, action) => {
+      state.currentProduct = action.payload[0];
       // return action.payload;
     },
     [addProduct.fulfilled]: (state, action) => {

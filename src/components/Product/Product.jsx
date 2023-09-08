@@ -5,6 +5,7 @@ import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
 import { addToCart } from "../../state";
 import { useNavigate } from "react-router-dom";
+import { formatPrice } from "../../utils";
 
 const Product = ({ product }) => {
   const theme = useTheme();
@@ -38,6 +39,7 @@ const Product = ({ product }) => {
           width="100%"
           height="250px"
           src={`${image_url}`}
+          cursor="pointer"
           onClick={() => navigate(`/products/${id}`)}
         />
         <Box
@@ -139,7 +141,7 @@ const Product = ({ product }) => {
             alignSelf: "center",
           }}
         >
-          ${price}
+          {formatPrice(product?.price)}
         </Typography>
       </Box>
     </Box>

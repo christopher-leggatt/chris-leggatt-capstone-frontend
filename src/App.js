@@ -8,6 +8,7 @@ import User from "./pages/User/User";
 import Checkout from "./pages/Checkout/Checkout";
 import SiteHeader from "./components/global/SiteHeader/SiteHeader";
 import Footer from "./components/global/Footer/Footer";
+import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -29,7 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/products" element={<Shop />} />
-            <Route path="/products/:id" element={<Shop />} />
+            <Route path="/products/:productId" element={<Shop />} />
             <Route path="/products/category/:category" element={<Shop />} />
             <Route path="/stores" element={<Stores />} />
             <Route path="/users" element={<User />} />

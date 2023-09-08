@@ -43,13 +43,13 @@ const shades = {
     500: "#f44336",
     800: "#621b16",
   },
-
+  // Cpstone Amber 
   warning: {
     200: "#e5d9a2",
     500: "#bda017",
     800: "#4c4009",
   },
-
+  // Capstone Lightgreen
   success: {
     200: "#9fd19f",
     500: "#108c10",
