@@ -55,8 +55,8 @@ export const getCurrentProduct = createAsyncThunk(
   }
 );
 
-export const addProduct = createAsyncThunk(
-  "products/addProduct",
+export const createProduct = createAsyncThunk(
+  "products/createProduct",
 
   async (product) => {
     try {
@@ -115,7 +115,7 @@ const productsSlice = createSlice({
       state.currentProduct = action.payload[0];
       // return action.payload;
     },
-    [addProduct.fulfilled]: (state, action) => {
+    [createProduct.fulfilled]: (state, action) => {
       state.push(action.payload);
       // return action.payload;
     },

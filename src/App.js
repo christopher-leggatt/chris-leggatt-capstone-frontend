@@ -8,7 +8,6 @@ import User from "./pages/User/User";
 import Checkout from "./pages/Checkout/Checkout";
 import SiteHeader from "./components/global/SiteHeader/SiteHeader";
 import Footer from "./components/global/Footer/Footer";
-import ProductDetails from "./pages/ProductDetails/ProductDetails";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
