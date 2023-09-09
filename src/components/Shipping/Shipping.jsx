@@ -1,20 +1,27 @@
-import React from 'react';
+import React from "react";
 import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
-import AddressForm from "./AddressForm";
+import AddressForm from '../AddressForm/AddressForm';
+import { useTheme } from "@mui/material/styles";
 
 const Shipping = ({
-    values,
-    touched,
-    errors,
-    handleChange,
-    handleBlur,
-    setFieldValue,
-  }) => {
+  values,
+  touched,
+  errors,
+  handleChange,
+  handleBlur,
+  setFieldValue,
+}) => {
+
+  const theme = useTheme();
+
   return (
     <Box m="30px auto">
-      {/* Billing Form */}
+      {/* BILLING FORM */}
       <Box>
-        <Typography sx={{ mb: "15px" }} fontSize="18px">
+        <Typography sx={{
+            mt: { xs: "24px", md: "36px" },
+            mb: { xs: "16px", md: "24px" },
+          }} variant="subheader">
           Billing Information
         </Typography>
         <AddressForm
@@ -27,7 +34,7 @@ const Shipping = ({
         />
       </Box>
 
-      <Box mb="20px">
+      <Box mb="24px">
         <FormControlLabel
           control={
             <Checkbox
@@ -45,10 +52,10 @@ const Shipping = ({
         />
       </Box>
 
-      {/* Shipping Form */}
+      {/* SHIPPING FORM */}
       {!values.shippingAddress.isSameAddress && (
         <Box>
-          <Typography sx={{ mb: "15px" }} fontSize="18px">
+          <Typography mb="24px" variant="subheader">
             Shipping Information
           </Typography>
           <AddressForm
@@ -62,8 +69,7 @@ const Shipping = ({
         </Box>
       )}
     </Box>
-  )
-}
+  );
+};
 
 export default Shipping;
-   

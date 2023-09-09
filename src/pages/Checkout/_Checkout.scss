@@ -1,2 +1,14 @@
-@use '../../styles/partials/mixins' as *;
-@use '../../styles/partials/variables' as *;
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.checkout {
+  padding: 16px;
+
+  @include breakpoint(tablet) {
+    padding: 24px;
+  }
+
+  @include breakpoint(desktop) {
+    @include axial-padding(x, 130px, 130px);
+  }
+}

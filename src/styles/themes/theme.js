@@ -125,7 +125,7 @@ let capstoneTheme = createTheme({
     divider: shades.dark[200],
   },
   typography: {
-    fontFamily: ["Inter", "sans-serif"].join(","),
+    fontFamily: ["Inter Variable", "sans-serif"].join(","),
     fontSize: 13,
     pageHeader: {
       fontWeight: 700,

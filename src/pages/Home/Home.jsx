@@ -1,11 +1,12 @@
 import React from 'react';
 import './_Home.scss';
-import ProductCarousel from '../../components/BannerCarousel/BannerCarousel';
+import HomeCarousel from '../../components/HomeCarousel/HomeCarousel';
 
 const Home = () => {
   return (
     <section className='home'>
-      <ProductCarousel />
+
+      <HomeCarousel />
       
     </section>
   )

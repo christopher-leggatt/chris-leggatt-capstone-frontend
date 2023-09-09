@@ -5,8 +5,8 @@ import { Formik } from "formik";
 import { useState } from "react";
 import * as yup from "yup";
 import { useTheme } from "@mui/material/styles";
-import Payment from "./Payment";
-import Shipping from "./Shipping";
+import Payment from "../../components/Payment/Payment";
+import Shipping from "../../components/Shipping/Shipping";
 import { loadStripe } from "@stripe/stripe-js";
 import { createOrder } from "../../order";
 import { useDispatch } from "react-redux";
@@ -62,97 +62,99 @@ const Checkout = () => {
   }
 
   return (
-    <Box width="80%" m="100px auto">
-      <Stepper
-        activeStep={activeStep}
-        sx={{
-          mt: { xs: "24px", md: "36px" },
-          mb: { xs: "16px", md: "24px" },
-        }}
-      >
-        <Step>
-          <StepLabel>Billing</StepLabel>
-        </Step>
-        <Step>
-          <StepLabel>Payment</StepLabel>
-        </Step>
-      </Stepper>
-      <Box>
-        <Formik
-          onSubmit={handleFormSubmit}
-          initialValues={initialValues}
-          validationSchema={checkoutSchema[activeStep]}
+    <section className="checkout">
+      <Box width="100%" m="100px auto">
+        <Stepper
+          activeStep={activeStep}
+          sx={{
+            mt: { xs: "24px", md: "36px" },
+            mb: { xs: "16px", md: "24px" },
+          }}
         >
-          {({
-            values,
-            errors,
-            touched,
-            handleBlur,
-            handleChange,
-            handleSubmit,
-            setFieldValue,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              {isFirstStep && (
-                <Shipping
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
-                  setFieldValue={setFieldValue}
-                />
-              )}
-              {isSecondStep && (
-                <Payment
-                  values={values}
-                  errors={errors}
-                  touched={touched}
-                  handleBlur={handleBlur}
-                  handleChange={handleChange}
-                  setFieldValue={setFieldValue}
-                />
-              )}
-              <Box display="flex" justifyContent="space-between" gap="50px">
-                {!isFirstStep && (
+          <Step>
+            <StepLabel>Billing</StepLabel>
+          </Step>
+          <Step>
+            <StepLabel>Payment</StepLabel>
+          </Step>
+        </Stepper>
+        <Box>
+          <Formik
+            onSubmit={handleFormSubmit}
+            initialValues={initialValues}
+            validationSchema={checkoutSchema[activeStep]}
+          >
+            {({
+              values,
+              errors,
+              touched,
+              handleBlur,
+              handleChange,
+              handleSubmit,
+              setFieldValue,
+            }) => (
+              <form onSubmit={handleSubmit}>
+                {isFirstStep && (
+                  <Shipping
+                    values={values}
+                    errors={errors}
+                    touched={touched}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    setFieldValue={setFieldValue}
+                  />
+                )}
+                {isSecondStep && (
+                  <Payment
+                    values={values}
+                    errors={errors}
+                    touched={touched}
+                    handleBlur={handleBlur}
+                    handleChange={handleChange}
+                    setFieldValue={setFieldValue}
+                  />
+                )}
+                <Box display="flex" justifyContent="space-between" gap="50px">
+                  {!isFirstStep && (
+                    <Button
+                      fullWidth
+                      color="primary"
+                      variant="contained"
+                      sx={{
+                        // backgroundColor: shades.primary[200],
+                        // boxShadow: "none",
+                        // color: "white",
+                        borderRadius: "22.5px",
+                        padding: "15px 40px",
+                      }}
+                      onClick={() => setActiveStep(activeStep - 1)}
+                    >
+                      Back
+                    </Button>
+                  )}
                   <Button
                     fullWidth
+                    type="submit"
                     color="primary"
                     variant="contained"
+                    // color={theme.palette.primary.main}
                     sx={{
-                      // backgroundColor: shades.primary[200],
+                      // backgroundColor: theme.palette.primary.main,
                       // boxShadow: "none",
-                      // color: "white",
+                      color: "white",
                       borderRadius: "22.5px",
                       padding: "15px 40px",
                     }}
-                    onClick={() => setActiveStep(activeStep - 1)}
                   >
-                    Back
+                    {!isSecondStep ? "Next" : "Place Order"}
                   </Button>
-                )}
-                <Button
-                  fullWidth
-                  type="submit"
-                  color="primary"
-                  variant="contained"
-                  // color={theme.palette.primary.main}
-                  sx={{
-                    // backgroundColor: theme.palette.primary.main,
-                    // boxShadow: "none",
-                    color: "white",
-                    borderRadius: "22.5px",
-                    padding: "15px 40px",
-                  }}
-                >
-                  {!isSecondStep ? "Next" : "Place Order"}
-                </Button>
-              </Box>
-            </form>
-          )}
-        </Formik>
+                </Box>
+              </form>
+            )}
+          </Formik>
+        </Box>
       </Box>
-    </Box>
+    </section>
   );
 };
 

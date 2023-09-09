@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardMedia } from "@mui/material";
 
-const Banner = ({ banner }) => {
+const HomeBanner = ({ banner }) => {
   return (
     <Card
       raised={true}
@@ -19,10 +19,10 @@ const Banner = ({ banner }) => {
           width: "100%",
           height: "100%",
         }}
-        image={banner.image}
+        image={banner}
       />      
     </Card>
   );
 };
 
-export default Banner;
+export default HomeBanner;
