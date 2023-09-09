@@ -6,70 +6,86 @@
   $typeSettings: (
     page-header: (
       mobile: (
-        font-size: 24px,
-        line-height: 32px,
+        font-size: 32px,
+        line-height: 1.1875,
         font-weight: 700,
+        font-family: "Newsreader Variable",
       ),
       tablet-desktop: (
-        font-size: 33px,
-        line-height: 44px,
+        font-size: 44px,
+        line-height: 1.1875,
         font-weight: 700,
+        font-family: "Newsreader Variable",
       ),
     ),
     section-header: (
       mobile: (
-        font-size: 12px,
-        line-height: 20px,
-        font-weight: 700,
+        font-size: 24px,
+        line-height: 1.1667,
+        font-weight: 600,
+        font-family: "Newsreader Variable",
       ),
       tablet-desktop: (
-        font-size: 12px,
-        line-height: 20px,
-        font-weight: 700,
+        font-size: 24px,
+        line-height: 1.1667,
+        font-weight: 600,
+        font-family: "Newsreader Variable",
       ),
     ),
     subheader1: (
       mobile: (
-        font-size: 13px,
-        line-height: 18px,
-        font-weight: 600,
+        font-size: 20px,
+        line-height: 1.2,
+        font-weight: 500,
+        font-family: "Inter Variable",
       ),
       tablet-desktop: (
-        font-size: 14px,
-        line-height: 22px,
-        font-weight: 600,
+        font-size: 20px,
+        line-height: 1.2,
+        font-weight: 500,
+        font-family: "Inter Variable",
       ),
     ),
     subheader2: (
       mobile: (
-        font-size: 9px,
-        line-height: 9px,
-        font-weight: 600,
+        font-size: 16px,
+        line-height: 1.25,
+        font-weight: 500,
+        font-family: "Inter Variable",
       ),
       tablet-desktop: (
-        font-size: 11px,
-        line-height: 11px,
-        font-weight: 600,
+        font-size: 16px,
+        line-height: 1.25,
+        font-weight: 500,
+        font-family: "Inter Variable",
       ),
     ),
     labels-links-btns: (
       mobile: (
         font-size: 10px,
-        line-height: 20px,
+        line-height: 1.4,
+        font-weight: 700,
+        font-family: "Inter Variable",
       ),
       tablet-desktop: (
         font-size: 12px,
-        line-height: 20px,
+        line-height: 1.666,
+        font-weight: 700,
+        font-family: "Inter Variable",
       ),
     ),
     body-copy: (
       mobile: (
-        font-size: 13px,
-        line-height: 20px,
+        font-size: 14px,
+        line-height: 1.2857,
+        font-weight: 400,
+        font-family: "Inter Variable",
       ),
       tablet-desktop: (
         font-size: 14px,
-        line-height: 22px,
+        line-height: 1.2857,
+        font-weight: 400,
+        font-family: "Inter Variable",
       ),
     ),
   );
@@ -80,6 +96,7 @@
   font-weight: map-get($selectedStyles, "font-weight");
   font-size: map-get($selectedStyles, "font-size");
   line-height: map-get($selectedStyles, "line-height");
+  font-family: map-get($selectedStyles, "font-family");
 }
 
 // Breakpoint mixins

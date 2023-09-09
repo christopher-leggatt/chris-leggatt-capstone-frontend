@@ -7,7 +7,7 @@
   flex-direction: column;
   row-gap: 16px;
   padding: 16px;
-  background-color: $capstone-tan;
+  background-color: $footer-bg;
   color: $primary-text-dark;
 
   &__social-copyright-card-wrapper {
@@ -24,7 +24,6 @@
     text-align: center;
     white-space: normal;
     overflow-wrap: break-word;
-    // word-break: break-all;
 
     &__heading {
       @include typekit(section-header, mobile);

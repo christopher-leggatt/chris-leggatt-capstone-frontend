@@ -1,6 +1,7 @@
 @use './mixins' as *;
-@use './font-face' as *;
 @use './variables' as *;
+@import "~@fontsource-variable/inter";
+@import "~@fontsource-variable/newsreader"; 
 
 a {
     text-decoration: none;
@@ -28,7 +29,7 @@ input,
 textarea,
 *,
 *::placeholder {
-    font-family: "Inter", sans-serif;    
+    font-family: "Inter Variable", sans-serif;    
 }
 
 li {

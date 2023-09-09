@@ -1,62 +1,5 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-const shades = {
-  // Capstone green
-  primary: {
-    200: "#99aa9d",
-    500: "#012a0a",
-    800: "#001104",
-  },
-  // Capstone orange
-  secondary: {
-    200: "#fbdba7",
-    500: "#f5a623",
-    800: "#62420e",
-  },
-  //Capstone tan
-  neutral: {
-    200: "#d0d1ba",
-    500: "#898d53",
-    800: "#373821",
-  },
-  // Capstone white
-  light: {
-    200: "#f9f8f7",
-    500: "#f0edea",
-    800: "#605f5e",
-  },
-  // Capstone blue
-  info: {
-    200: "#cce0e0",
-    500: "#7fb2b2",
-    800: "#334747",
-  },
-  //Capstone black
-  dark: {
-    200: "#a6a9a9",
-    500: "#202927",
-    800: "#0d1010",
-  },
-  // Capstone red
-  error: {
-    200: "#fbb4af",
-    500: "#f44336",
-    800: "#621b16",
-  },
-  // Cpstone Amber 
-  warning: {
-    200: "#e5d9a2",
-    500: "#bda017",
-    800: "#4c4009",
-  },
-  // Capstone Lightgreen
-  success: {
-    200: "#9fd19f",
-    500: "#108c10",
-    800: "#063806",
-  },
-};
-
 let capstoneTheme = createTheme({
   breakpoints: {
     values: {
@@ -69,70 +12,88 @@ let capstoneTheme = createTheme({
   },
   palette: {
     primary: {
-      main: shades.primary[500],
-      light: shades.primary[200],
-      dark: shades.primary[800],
+      main: "#4CAF50",
+      light: "#81C784",
+      dark: "#2E7D32",
       contrastText: "#fff",
     },
     secondary: {
-      main: shades.secondary[500],
-      light: shades.secondary[200],
-      dark: shades.secondary[800],
+      main: "#9E9E9E",
+      light: "#CFCFCF",
+      dark: "#707070",
       contrastText: "#fff",
     },
     neutral: {
-      main: shades.neutral[500],
-      light: shades.neutral[200],
-      dark: shades.neutral[800],
+      main: "#8D6E63",
+      light: "#BAA19C",
+      dark: "#614744",
       contrastText: "#fff",
     },
     light: {
-      main: shades.light[500],
-      light: shades.light[200],
-      dark: shades.light[800],
-      contrastText: shades.dark[500],
+      main: "#FAFAFA",
+      light: "#FFFFFF",
+      dark: "#C7C7C7",
+      contrastText: "#5D4037",
     },
     dark: {
-      main: shades.dark[500],
-      light: shades.dark[200],
-      dark: shades.dark[800],
+      main: "#5D4037",
+      light: "#8A6655",
+      dark: "#32251C",
       contrastText: "#fff",
     },
     info: {
-      main: shades.info[500],
-      light: shades.info[200],
-      dark: shades.info[800],
+      main: "#4CAF50",
+      light: "#81C784",
+      dark: "#2E7D32",
       contrastText: "#fff",
     },
     error: {
-      main: shades.error[500],
-      light: shades.error[200],
-      dark: shades.error[800],
+      main: "#D32F2F",
+      light: "#E57373",
+      dark: "#C62828",
       contrastText: "#fff",
     },
     warning: {
-      main: shades.warning[500],
-      light: shades.warning[200],
-      dark: shades.warning[800],
+      main: "#FFA000",
+      light: "#FFCC80",
+      dark: "#E65100",
       contrastText: "#fff",
     },
     success: {
-      main: shades.success[500],
-      light: shades.success[200],
-      dark: shades.success[800],
+      main: "#388E3C",
+      light: "#66BB6A",
+      dark: "#2E7D32",
       contrastText: "#fff",
     },
-    divider: shades.dark[200],
+    divider: "#8A6655",
+  },
+  overrides: {
+    MuiButton: {
+      containedPrimary: {
+        backgroundColor: "#4CAF50",
+        "&:hover": {
+          backgroundColor: "#388E3C",
+        },
+      },
+      containedSecondary: {
+        backgroundColor: "#9E9E9E",
+        "&:hover": {
+          backgroundColor: "#707070",
+        },
+      },
+    },
   },
   typography: {
     fontFamily: ["Inter Variable", "sans-serif"].join(","),
     fontSize: 13,
     pageHeader: {
+      fontFamily: "Newsreader Variable",
       fontWeight: 700,
       fontSize: "32px",
       lineHeight: 1.1875,
     },
     sectionHeader: {
+      fontFamily: "Newsreader Variable",
       fontWeight: 600,
       fontSize: "24px",
       lineHeight: 1.1667,
