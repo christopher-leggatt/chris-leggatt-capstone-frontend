@@ -1,0 +1,27 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.about {
+  margin: 16px;
+  height: 100%;
+  aspect-ratio: 1280 / 800;
+  background-image: url('../../assets/images/about_page.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  &__placeholder-image {
+    height: 100%;
+    aspect-ratio: 1280 / 800;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  @include breakpoint(tablet) {
+    margin: 24px;
+  }
+
+  @include breakpoint(desktop) {
+    margin: 0 130px;
+  }
+}
