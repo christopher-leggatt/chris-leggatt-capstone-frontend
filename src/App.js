@@ -9,6 +9,7 @@ import Checkout from "./pages/Checkout/Checkout";
 import SiteHeader from "./components/global/SiteHeader/SiteHeader";
 import Footer from "./components/global/Footer/Footer";
 
+
 const ScrollToTop = () => {
   const { pathname } = useLocation();
 

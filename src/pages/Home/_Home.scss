@@ -2,8 +2,7 @@
 @use '../../styles/partials/variables' as *;
 
 .home {
-    height: 600px;
-    padding: 16px;
+    padding: 16px;    
 
     @include breakpoint(tablet) {
         padding: 24px;

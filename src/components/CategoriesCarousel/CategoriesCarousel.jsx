@@ -23,34 +23,28 @@ const CategoriesCarousel = () => {
       category_name: "edibles",
     },
     {
-      name: "Flower2",
-      image: "http://localhost:5050/images/category_images/flower_category.jpg",
-      category_name: "flower2",
+      name: "Concentrates",
+      image: "http://localhost:5050/images/category_images/concentrates_category.jpg",
+      category_name: "concentrates",
     },
     {
-      name: "Vaporizers2",
+      name: "Topicals",
       image:
-        "http://localhost:5050/images/category_images/vaporizers_category.jpg",
-      category_name: "vaporizers2",
+        "http://localhost:5050/images/category_images/topicals_category.jpg",
+      category_name: "topicals",
     },
     {
-      name: "Edibles2",
+      name: "Prerolls",
       image:
-        "http://localhost:5050/images/category_images/edibles_category.jpg",
-      category_name: "edibles2",
+        "http://localhost:5050/images/category_images/prerolls_category.jpg",
+      category_name: "prerolls",
     },
     {
-      name: "Vaporizers3",
+      name: "Seeds",
       image:
-        "http://localhost:5050/images/category_images/vaporizers_category.jpg",
-      category_name: "vaporizers3",
-    },
-    {
-      name: "Edibles3",
-      image:
-        "http://localhost:5050/images/category_images/edibles_category.jpg",
-      category_name: "edibles3",
-    },
+        "http://localhost:5050/images/category_images/seeds_category.jpg",
+      category_name: "seeds",
+    },   
   ];
 
   const chunkedCategories = [];

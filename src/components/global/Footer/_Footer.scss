@@ -9,6 +9,7 @@
   padding: 16px;
   background-color: $footer-bg;
   color: $primary-text-dark;
+  position: relative;
 
   &__social-copyright-card-wrapper {
     display: flex;
@@ -97,12 +98,12 @@
       }
 
       &__subheading {
-        @include typekit(subheader1, tablet-desktop);
+        @include typekit(subheader2, tablet-desktop);
         @include axial-padding(y, 0, 16px);
       }
 
       &__subheading-small {
-        @include typekit(subheader2, tablet-desktop);
+        @include typekit(subheader3, tablet-desktop);
         padding-bottom: 8px;
       }
 

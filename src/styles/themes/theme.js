@@ -1,6 +1,6 @@
 import { createTheme, responsiveFontSizes } from "@mui/material/styles";
 
-let capstoneTheme = createTheme({
+let theme = createTheme({
   breakpoints: {
     values: {
       xs: 0,
@@ -136,6 +136,6 @@ let capstoneTheme = createTheme({
   },
 });
 
-const theme = responsiveFontSizes(capstoneTheme);
+theme = responsiveFontSizes(theme);
 
 export default theme;

@@ -1,15 +1,15 @@
-import React from 'react';
-import './_Home.scss';
-import HomeCarousel from '../../components/HomeCarousel/HomeCarousel';
+import React from "react";
+import "./_Home.scss";
+import HomeCarousel from "../../components/HomeCarousel/HomeCarousel";
+import HomeHeader from "../../components/HomeHeader/HomeHeader";
 
 const Home = () => {
   return (
-    <section className='home'>
-
-      <HomeCarousel />
-      
+    <section className="home">
+        <HomeHeader />
+        <HomeCarousel />
     </section>
-  )
-}
+  );
+};
 
 export default Home;

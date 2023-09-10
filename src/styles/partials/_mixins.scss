@@ -88,6 +88,34 @@
         font-family: "Inter Variable",
       ),
     ),
+    subheader3: (
+      mobile: (
+        font-size: 8px, 
+        line-height: 1.2, 
+        font-weight: 500,
+        font-family: "Inter Variable",
+      ),
+      tablet-desktop: (
+        font-size: 10px,
+        line-height: 1.4,
+        font-weight: 500,
+        font-family: "Inter Variable",
+      ),
+    ),
+    body-copy-alt: (
+      mobile: (
+        font-size: 11px, 
+        line-height: 1.2, 
+        font-weight: 400,
+        font-family: "Inter Variable",
+      ),
+      tablet-desktop: (
+        font-size: 12px,
+        line-height: 1.3333,
+        font-weight: 400,
+        font-family: "Inter Variable",
+      ),
+    ),
   );
 
   $styles: map-get($typeSettings, $type);
