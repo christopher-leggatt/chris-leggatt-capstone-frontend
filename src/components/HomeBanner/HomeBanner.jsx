@@ -8,7 +8,6 @@ const HomeBanner = ({ banner }) => {
       sx={{
         flex: "none",
         width: "100%",
-        height: { xs: "200px", md: "300px" },        
       }}
     >
       <CardMedia
@@ -16,8 +15,8 @@ const HomeBanner = ({ banner }) => {
         sx={{
           objectFit: "cover",
           objectPosition: "center",
-          width: "100%",
-          height: "100%",
+          // width: "100%",
+          aspectRatio: "1678 / 559",
         }}
         image={banner}
       />      

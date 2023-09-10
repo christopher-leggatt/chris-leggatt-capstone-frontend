@@ -22,7 +22,7 @@ function Copyright(props) {
     >
       {"Copyright © "}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Convenient Cannabis Inc
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}

@@ -1,0 +1,8 @@
+@use "../../styles/partials/mixins" as *;
+@use "../../styles/partials/variables" as *;
+
+.home-carousel-wrapper {
+    width: 100%;
+    height: calc(((559vw / 1678) * 100) + 30px);
+}
+

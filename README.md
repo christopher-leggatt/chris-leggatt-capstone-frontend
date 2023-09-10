@@ -8,4 +8,5 @@ Deleted:
 -categories and category images would ultimately be something that the admin could edit; currently, they are simply loaded as assets from the backend 
 -added a very hasty About page just for sake of completion... to be developed
 -removed Stores page - tbd
--added SignIn page - non-functional, for sake of completeness
+-added SignIn page as template from MUI site - non-functional, for sake of completeness
+the logo in HomeHeader is meant to be a little offset
