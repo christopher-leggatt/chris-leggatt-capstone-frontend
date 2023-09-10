@@ -3,8 +3,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import React, { useEffect } from "react";
 import Home from "./pages/Home/Home";
 import Shop from "./pages/Shop/Shop";
-import Stores from "./pages/Stores/Stores";
-import User from "./pages/User/User";
+import SignIn from "./pages/SignIn/SignIn";
 import Checkout from "./pages/Checkout/Checkout";
 import SiteHeader from "./components/global/SiteHeader/SiteHeader";
 import Footer from "./components/global/Footer/Footer";
@@ -34,7 +33,7 @@ function App() {
             <Route path="/products/:productId" element={<Shop />} />
             <Route path="/products/category/:category" element={<Shop />} />
             <Route path="/about" element={<About />} />
-            <Route path="/users" element={<User />} />
+            <Route path="/signin" element={<SignIn />} />
             <Route path="/checkout" element={<Checkout />} />
           </Routes>
           <Footer />

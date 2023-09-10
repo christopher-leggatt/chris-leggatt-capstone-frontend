@@ -4,7 +4,6 @@ import {
   Menu,
   MenuItem,
   Typography,
-  Theme,
   AppBar,
   Box,
 } from "@mui/material";
@@ -19,8 +18,6 @@ const SiteHeader = () => {
   const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState( null );
   const [anchorElUser, setAnchorElUser] = useState( null );
-
-
   const theme = useTheme();
 
   const navMenuItems = [
@@ -31,7 +28,7 @@ const SiteHeader = () => {
 
   const navLinks = [
     ...navMenuItems,
-    { page: "Sign-in/Register", path: "users" },
+    { page: "Sign-in/Register", path: "signin" },
   ];
 
   const handleOpenNavMenu = (event) => {
@@ -180,10 +177,7 @@ const SiteHeader = () => {
       >
         {" "}
         <IconButton
-          className="user-menu__menu-btn"
-          // aria-label="user menu"
-          // aria-controls="menu-appbar"
-          // aria-haspopup="true"
+          className="user-menu__menu-btn"         
           onClick={handleOpenUserMenu}
         >
           <AccountCircle
@@ -210,8 +204,9 @@ const SiteHeader = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <Link to={"/users"} className="user-menu__menu-item">
-            <MenuItem component="article" className="user-menu__menu-item">
+          <Link to={"/signin"} className="user-menu__menu-item">
+            <MenuItem component="article" className="user-menu__menu-item" onClick={handleCloseUserMenu}
+>
               <Typography
                 variant="body1"
                 component="p"
@@ -221,8 +216,9 @@ const SiteHeader = () => {
               </Typography>
             </MenuItem>
           </Link>
-          <Link to={"/users"} className="user-menu__menu-item">
-            <MenuItem component="article" className="user-menu__menu-item">
+          <Link to={"/signin"} className="user-menu__menu-item">
+            <MenuItem component="article" className="user-menu__menu-item" onClick={handleCloseUserMenu}
+>
               <Typography
                 variant="body1"
                 component="p"

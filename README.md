@@ -5,5 +5,7 @@ Notes on Capstone:
 Deleted:
 -staffpicksheader 
 
--categories would ultimately be something that the admin could edit; currently, they are simply loaded as assets from the backend 
--added a very hasty About page just for sake of completion - will be developed
+-categories and category images would ultimately be something that the admin could edit; currently, they are simply loaded as assets from the backend 
+-added a very hasty About page just for sake of completion... to be developed
+-removed Stores page - tbd
+-added SignIn page - non-functional, for sake of completeness
