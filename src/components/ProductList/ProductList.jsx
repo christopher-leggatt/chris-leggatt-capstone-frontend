@@ -4,32 +4,43 @@ import Product from "../Product/Product";
 import { Typography, Tabs, Tab, Box } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts } from "../../store";
+import { getProducts, getCategorizedProducts } from "../../store";
 import { useTheme } from "@mui/material/styles";
+import { useParams } from "react-router-dom";
 
 const ProductList = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [value, setValue] = useState("all");
   const products = useSelector((state) => state.products.products.products);
+  const categorizedProducts = useSelector(
+    (state) => state.products.categorizedProducts
+  );
+
   const breakPoint = useMediaQuery("(min-width:768px)");
+  const { category } = useParams();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   useEffect(() => {
-    dispatch(getProducts());
-    console.log("Type of products:", typeof products);
-  }, [dispatch]);
+    if (category) {
+      dispatch(getCategorizedProducts(category));
+    } else {
+      dispatch(getProducts());
+    }
+  }, [dispatch, category]);
 
-  const indicaProducts =
-    products?.filter((product) => product.strain === "indica") || [];
-  const sativaProducts =
-    products?.filter((product) => product.strain === "sativa") || [];
-  const hybridProducts =
-    products?.filter((product) => product.strain === "hybrid") || [];
-
+  const getProductsByStrain = (strain) => {
+    const productList = category ? categorizedProducts : products;
+    return productList?.filter((product) => product.strain === strain) || [];
+  }
+  
+  const indicaProducts = getProductsByStrain("indica");
+  const sativaProducts = getProductsByStrain("sativa");
+  const hybridProducts = getProductsByStrain("hybrid");
+  
   return (
     <Box
       className="product-list"
@@ -76,38 +87,49 @@ const ProductList = () => {
           gap: { xs: "16px", md: "24px" },
         }}
       >
-        {value === "all" &&
-          (products || []).map((product) => (
-            <Product
-              className="product-list__item"
-              product={product}
-              key={`${product.name}-${product.id}`}
-            />
-          ))}
-        {value === "indica" &&
-          (indicaProducts || []).map((product) => (
-            <Product
-              className="product-list__item"
-              product={product}
-              key={`${product.name}-${product.id}`}
-            />
-          ))}
-        {value === "sativa" &&
-          (sativaProducts || []).map((product) => (
-            <Product
-              className="product-list__item"
-              product={product}
-              key={`${product.name}-${product.id}`}
-            />
-          ))}
-        {value === "hybrid" &&
-          (hybridProducts || []).map((product) => (
-            <Product
-              className="product-list__item"
-              product={product}
-              key={`${product.name}-${product.id}`}
-            />
-          ))}
+{/* Display all products from the selected category or all products */}
+{value === "all" && 
+    ((category ? categorizedProducts : products) || []).map((product) => (
+        <Product
+            className="product-list__item"
+            product={product}
+            key={`${product.name}-${product.id}`}
+        />
+    ))
+}
+
+{/* Display indica products from the selected category or all indica products */}
+{value === "indica" && 
+    indicaProducts.map((product) => (
+        <Product
+            className="product-list__item"
+            product={product}
+            key={`${product.name}-${product.id}`}
+        />
+    ))
+}
+
+{/* Display sativa products from the selected category or all sativa products */}
+{value === "sativa" && 
+    sativaProducts.map((product) => (
+        <Product
+            className="product-list__item"
+            product={product}
+            key={`${product.name}-${product.id}`}
+        />
+    ))
+}
+
+{/* Display hybrid products from the selected category or all hybrid products */}
+{value === "hybrid" && 
+    hybridProducts.map((product) => (
+        <Product
+            className="product-list__item"
+            product={product}
+            key={`${product.name}-${product.id}`}
+        />
+    ))
+}
       </Box>
     </Box>
   );

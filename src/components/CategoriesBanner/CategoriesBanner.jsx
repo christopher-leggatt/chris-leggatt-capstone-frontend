@@ -27,7 +27,7 @@ const CategoriesBanner = ({ chunkedCategory }) => {
         }}
       >
         <Link
-          to={`/products/category/:${category_name}`}
+          to={`/products/category/${category_name}`}
           className="categories-card__content"
         >
           <CardActionArea

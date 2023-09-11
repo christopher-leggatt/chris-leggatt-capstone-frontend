@@ -37,7 +37,7 @@ const ShopHeader = () => {
 
   const navLinks = [
     { page: "Home", path: "" },
-    { page: "Categories", path: "/products/category/:category" },
+    { page: "Categories", path: "products" },
   ];
 
   return (

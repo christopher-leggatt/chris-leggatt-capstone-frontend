@@ -1,13 +1,18 @@
 import React from "react";
 import { Card, CardMedia } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const HomeBanner = ({ banner }) => {
+  const navigate = useNavigate();
+
   return (
     <Card
       raised={true}
+      onClick={() => navigate("/products")}
       sx={{
         flex: "none",
         width: "100%",
+        cursor: "pointer",
       }}
     >
       <CardMedia
@@ -15,8 +20,8 @@ const HomeBanner = ({ banner }) => {
         sx={{
           objectFit: "cover",
           objectPosition: "center",
-          // width: "100%",
           aspectRatio: "1678 / 559",
+
         }}
         image={banner}
       />      

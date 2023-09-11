@@ -63,7 +63,7 @@ const CategoriesCarousel = () => {
       cycleNavigation={true}
       fullHeightHover={true}
       swipe={true}
-      sx={{ overflow: "hidden" }}
+      sx={{ overflow: "hidden" }}      
       navButtonsProps={{
         style: {
           opacity: 0.6,

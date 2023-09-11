@@ -191,7 +191,9 @@ const CartDrawer = () => {
                     <ItemQuantityBox lassName="list-item__quantity-wrapper">
                       <IconButton
                         className="list-item__decrease-btn"
-                        onClick={() => dispatch(decreaseCount({ id: product.id }))}
+                        onClick={() =>
+                          dispatch(decreaseCount({ id: product.id }))
+                        }
                         size="small"
                       >
                         <Remove />
@@ -202,7 +204,9 @@ const CartDrawer = () => {
                       <IconButton
                         className="list-item__increase-btn"
                         size="small"
-                        onClick={() => dispatch(increaseCount({ id: product.id }))}
+                        onClick={() =>
+                          dispatch(increaseCount({ id: product.id }))
+                        }
                       >
                         <Add />
                       </IconButton>
