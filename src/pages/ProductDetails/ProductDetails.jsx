@@ -128,9 +128,7 @@ const ProductDetails = () => {
               startIcon={<Add />}
               color="primary"
               size="medium"
-              onClick={() =>
-                dispatch(addToCart({ product: { ...product, count } }))
-              }
+              onClick={() => dispatch(addToCart({ product, count }))}
             >
               Add to Cart
             </Button>

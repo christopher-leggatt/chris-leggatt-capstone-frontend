@@ -215,7 +215,7 @@ const CartDrawer = () => {
                       className="list-item__item-price"
                       fontWeight="bold"
                     >
-                      {formatPrice(product.price)}
+                      {formatPrice(product.price * product.count)}
                     </Typography>
                   </FlexBox>
                 </>
