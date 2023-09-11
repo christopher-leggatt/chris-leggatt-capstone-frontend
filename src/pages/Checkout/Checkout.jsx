@@ -23,6 +23,8 @@ const Checkout = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
 
+  document.title = "Checkout";
+
   const handleFormSubmit = async (values, actions) => {
     setActiveStep(activeStep + 1);
 
@@ -121,9 +123,6 @@ const Checkout = () => {
                       color="primary"
                       variant="contained"
                       sx={{
-                        // backgroundColor: shades.primary[200],
-                        // boxShadow: "none",
-                        // color: "white",
                         borderRadius: "22.5px",
                         padding: "15px 40px",
                       }}
@@ -137,10 +136,7 @@ const Checkout = () => {
                     type="submit"
                     color="primary"
                     variant="contained"
-                    // color={theme.palette.primary.main}
                     sx={{
-                      // backgroundColor: theme.palette.primary.main,
-                      // boxShadow: "none",
                       color: "white",
                       borderRadius: "22.5px",
                       padding: "15px 40px",

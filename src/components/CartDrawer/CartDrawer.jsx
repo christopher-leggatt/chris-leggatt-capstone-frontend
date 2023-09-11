@@ -45,8 +45,9 @@ const CartDrawer = () => {
   const cart = useSelector((state) => state.cart.cart);
   const isCartOpen = useSelector((state) => state.cart.isCartOpen);
   const totalPrice = cart.reduce((total, product) => {
-    return formatPrice(total + product.count * product.price);
+    return total + product.count * product.price;
   }, 0);
+  const formattedTotalPrice = formatPrice(totalPrice);
 
   const list = (anchor) => (
     <Box
@@ -83,7 +84,7 @@ const CartDrawer = () => {
             variant="subHeaderExtraSmall"
             className="cart-drawer__subheading"
           >
-            Subtotal: {totalPrice}
+            Subtotal: {formattedTotalPrice}
           </Typography>
         </StyledFlexBox>
         <Button

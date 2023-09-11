@@ -42,6 +42,8 @@ const ProductDetails = () => {
     }
   }, [product]);
 
+  document.title = `${product?.name} at Convenient Cannabis Inc.`;
+
   return (
     <Box
       className="productDetails"

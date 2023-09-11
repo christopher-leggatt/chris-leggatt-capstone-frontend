@@ -16,7 +16,6 @@ export const getProducts = createAsyncThunk(
       const response = await api.get("/products");
       const { data } = response;
       console.log(response.data);
-      // return response.data;
       return data;
 
     } catch (error) {
@@ -32,7 +31,6 @@ export const getCategorizedProducts = createAsyncThunk(
   async (category) => {
     try {
       const response = await api.get(`/products/category/${category}`);
-      console.log("🚀 ~ file: index.js:36 ~ response.data:", response.data);
       return response.data;
     } catch (error) {
       console.error("Error fetching products:", error);

@@ -13,6 +13,11 @@ import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
 
 function Copyright(props) {
+
+  document.title = "Sign-in / Register";
+
+
+
   return (
     <Typography
       variant="body2"

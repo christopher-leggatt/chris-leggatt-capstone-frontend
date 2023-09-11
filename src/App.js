@@ -8,6 +8,7 @@ import Checkout from "./pages/Checkout/Checkout";
 import SiteHeader from "./components/global/SiteHeader/SiteHeader";
 import Footer from "./components/global/Footer/Footer";
 import About from "./pages/About/About";
+import Confirmation from "./pages/Confirmation/Confirmation";
 
 
 const ScrollToTop = () => {
@@ -35,6 +36,8 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/checkout/success" element={<Confirmation />} />
+
           </Routes>
           <Footer />
         </main>

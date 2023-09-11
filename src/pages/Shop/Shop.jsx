@@ -8,6 +8,8 @@ import { useParams } from "react-router-dom";
 
 const Shop = () => {
 
+  document.title = "Shop with Convenient Cannabis Inc.";
+
   const { productId } = useParams();
   return (
     <section className="shop">
