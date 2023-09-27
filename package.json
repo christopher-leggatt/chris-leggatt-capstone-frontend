@@ -8,7 +8,7 @@
     "@fontsource-variable/inter": "^5.0.8",
     "@fontsource-variable/newsreader": "^5.0.9",
     "@fontsource/roboto": "^5.0.8",
-    "@mui/icons-material": "^5.14.3",
+    "cd": "^5.14.3",
     "@mui/material": "^5.14.5",
     "@reduxjs/toolkit": "^1.9.5",
     "@stripe/stripe-js": "^2.1.2",
@@ -37,6 +37,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start-client": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
