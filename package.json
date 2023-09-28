@@ -2,13 +2,16 @@
   "name": "chris-leggatt-capstone-frontend",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christopher-leggatt/chris-leggatt-capstone-frontend.git"
+  },
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource-variable/inter": "^5.0.8",
     "@fontsource-variable/newsreader": "^5.0.9",
     "@fontsource/roboto": "^5.0.8",
-    "cd": "^5.14.3",
     "@mui/material": "^5.14.5",
     "@reduxjs/toolkit": "^1.9.5",
     "@stripe/stripe-js": "^2.1.2",
