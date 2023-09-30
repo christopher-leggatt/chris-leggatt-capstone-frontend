@@ -6,9 +6,11 @@ export const createOrder = createAsyncThunk(
 
   async (order) => {
     try {
+      console.log("🚀 ~ file: index.js:9 ~ order:", order)
       const response = await api.post("/orders", order);
       return response.data;
     } catch (error) {
+      console.log("🚀 ~ file: index.js:9 ~ order:", error.response.data)
       console.error("Error adding order:", error);
       throw error;
     }
