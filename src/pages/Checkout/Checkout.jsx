@@ -10,10 +10,7 @@ import Shipping from "../../components/Shipping/Shipping";
 import { loadStripe } from "@stripe/stripe-js";
 import { createOrder } from "../../order";
 import { useDispatch } from "react-redux";
-
-const stripePromise = loadStripe(
-  "pk_test_51LgU7yConHioZHhlAcZdfDAnV9643a7N1CMpxlKtzI1AUWLsRyrord79GYzZQ6m8RzVnVQaHsgbvN1qSpiDegoPi006QkO0Mlc"
-);
+import { formatPrice } from "../../utils";
 
 const Checkout = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -22,6 +19,22 @@ const Checkout = () => {
   const isSecondStep = activeStep === 1;
   const theme = useTheme();
   const dispatch = useDispatch();
+  const totalPrice = cart?.reduce((total, product) => {
+    return total + product.count * product.price;
+  }, 0);
+  const formattedTotalPrice = formatPrice(totalPrice);
+  const stripePromise = loadStripe(
+    "pk_test_51LgU7yConHioZHhlAcZdfDAnV9643a7N1CMpxlKtzI1AUWLsRyrord79GYzZQ6m8RzVnVQaHsgbvN1qSpiDegoPi006QkO0Mlc"
+  );
+
+  const testUser = {
+    username: "user1",
+    email: "user1@example.com",
+    user_id: "6cc40c68-b2bd-42a9-acb4-b2f3d2545975",
+    billing_address_id: 1,
+    shipping_address_id: 1,
+    price_total: totalPrice,
+  };
 
   document.title = "Checkout";
 
@@ -42,14 +55,30 @@ const Checkout = () => {
     actions.setTouched({});
   };
 
+  // async function makePayment(values) {
+  //   const stripe = await stripePromise;
+  //   const requestBody = {
+  //     username:
+  //       values.firstName && values.lastName
+  //         ? [values.firstName, values.lastName].join(" ")
+  //         : "User Test",
+  //     email: values.email,
+  //     products: cart.map(({ id, count }) => ({
+  //       id,
+  //       count,
+  //     })),
+  //   };
+
   async function makePayment(values) {
     const stripe = await stripePromise;
     const requestBody = {
-      userName: [values.firstName, values.lastName].join(" "),
-      email: values.email,
-      products: cart.map(({ id, count }) => ({
+      ...testUser,
+      products: cart.map(({ id, count, price, name, description }) => ({
         id,
         count,
+        price,
+        name,
+        description,
       })),
     };
 
@@ -59,6 +88,7 @@ const Checkout = () => {
         sessionId: order.id,
       });
     } catch (error) {
+      console.log("🚀 ~ file: Checkout.jsx:62 ~ makePayment ~ error:", error);
       console.error("Error processing order:", error);
     }
   }
