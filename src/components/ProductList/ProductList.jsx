@@ -34,7 +34,7 @@ const ProductList = () => {
 
   const getProductsByStrain = (strain) => {
     const productList = category ? categorizedProducts : products;
-    return productList?.filter((product) => product.strain === strain) || [];
+    return productList?.filter((product) => product?.strain === strain) || [];
   }
   
   const indicaProducts = getProductsByStrain("indica");

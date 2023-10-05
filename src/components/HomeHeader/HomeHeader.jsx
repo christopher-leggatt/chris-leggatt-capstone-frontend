@@ -1,8 +1,11 @@
 import React from 'react';
 import { Button } from '@mui/material';
 import './_HomeHeader.scss';
+import { useNavigate } from 'react-router-dom';
 
 const HomeHeader = () => {
+
+  const navigate = useNavigate();
   return (
     <section className="home-header">
       <video className="home-header__background-video" autoPlay muted>
@@ -11,7 +14,7 @@ const HomeHeader = () => {
       <div className="home-header__overlay-content">
         <h1 className='home-header__page-header' style={{ fontStyle: 'Newsreader Variable'}} >Welcome to Convenient Cannabis</h1>
         <p className='home-header__page-content'>Premium Cannabis Products, Tailored for You.</p>
-        <Button variant="contained" color="primary" size="large" href="/products">
+        <Button variant="contained" color="primary" size="large" onClick={() => navigate('/products')}>
           Shop Now
         </Button>
       </div>

@@ -29,12 +29,15 @@ const HomeCarousel = () => {
       swipe={true}
       navButtonsProps={{
         style: {
-          opacity: 0.6,
+          opacity: 0.6,          
         },
       }}
       sx={{
         width: "100%",
-        height: '100%',       
+        height: '100%',
+        "& .MuiButtonBase-root": {
+          top: "calc(50% - 40px) !important",
+        }       
       }}
     >
       {bannerPaths(5).map((banner, index) => (

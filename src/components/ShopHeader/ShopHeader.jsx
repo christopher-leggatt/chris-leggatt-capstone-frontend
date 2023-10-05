@@ -45,7 +45,7 @@ const ShopHeader = () => {
       component="header"
       className="shop-header"
       sx={{
-        position: "static",
+        position: "sticky",
         width: "100%",
         display: "flex",
         flexDirection: "row",

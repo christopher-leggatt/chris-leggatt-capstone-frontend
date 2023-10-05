@@ -26,6 +26,7 @@ const Product = ({ product }) => {
         flexDirection: "column",
         justifyContent: "space-between",
         transition: "0.3s",
+        cursor: "pointer",
         "&:hover": {
           boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)",
           transform: "translateY(-5px)",
