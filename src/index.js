@@ -5,14 +5,7 @@ import App from "./App";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "./styles/themes/theme";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
-import cartReducer from './state';
-import productsReducer from './store';
-
-const store = configureStore({
-  reducer: { cart: cartReducer, products: productsReducer },
-});
-
+import store from "./state/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

@@ -11,10 +11,10 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Product from "../../components/Product/Product";
 import { Add, Remove } from "@mui/icons-material";
-import { addToCart } from "../../state";
+import { addToCart } from "../../state/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
-import { getCategorizedProducts, getCurrentProduct } from "../../store";
+import { getCategorizedProducts, getCurrentProduct } from '../../state/storeSlice';
 import { formatPrice } from "../../utils";
 
 const ProductDetails = () => {

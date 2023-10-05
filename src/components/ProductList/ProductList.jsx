@@ -4,7 +4,7 @@ import Product from "../Product/Product";
 import { Typography, Tabs, Tab, Box } from "@mui/material";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useDispatch, useSelector } from "react-redux";
-import { getProducts, getCategorizedProducts } from "../../store";
+import { getProducts, getCategorizedProducts } from "../../state/storeSlice";
 import { useTheme } from "@mui/material/styles";
 import { useParams } from "react-router-dom";
 

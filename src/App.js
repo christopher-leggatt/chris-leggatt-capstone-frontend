@@ -34,7 +34,7 @@ function App() {
 
 function Content() {
   const { pathname } = useLocation();
-  const [verified, setVerified] = useState(false);
+  const [verified, setVerified] = useState(true);
 
   return (
     <>

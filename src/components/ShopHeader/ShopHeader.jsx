@@ -8,7 +8,7 @@ import Searchbar from "../Searchbar/Searchbar";
 import CartDrawer from "../CartDrawer/CartDrawer";
 import ShopDrawer from "../ShopDrawer/ShopDrawer";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsCartOpen } from "../../state";
+import { setIsCartOpen } from "../../state/cartSlice"; 
 
 const ShopHeader = () => {
   const navigate = useNavigate();

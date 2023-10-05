@@ -20,7 +20,7 @@ import {
   removeFromCart,
   addToCart,
   setIsCartOpen,
-} from "../../state";
+} from "../../state/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
