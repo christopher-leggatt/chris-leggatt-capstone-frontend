@@ -23,34 +23,38 @@ const ScrollToTop = () => {
 };
 
 function App() {
-
-  const [verified, setVerified] = useState(false);
-
-    // if (!verified) {
-    //     return <AgeModal onVerified={() => setVerified(true)} />;
-    // }
   return (
     <div className="App">
       <BrowserRouter>
-      {!verified && <AgeModal onVerified={() => setVerified(true)} />}
-        <ScrollToTop />
-        <main>
-          <SiteHeader />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products" element={<Shop />} />
-            <Route path="/products/category/:category" element={<Shop />} />
-            <Route path="/products/:productId" element={<Shop />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/checkout/success" element={<Confirmation />} />
-
-          </Routes>
-          <Footer />
-        </main>
+        <Content />
       </BrowserRouter>
     </div>
+  );
+}
+
+function Content() {
+  const { pathname } = useLocation();
+  const [verified, setVerified] = useState(false);
+
+  return (
+    <>
+      {!verified && pathname !== "/checkout/success" && <AgeModal onVerified={() => setVerified(true)} />}
+      <ScrollToTop />
+      <main>
+        <SiteHeader />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<Shop />} />
+          <Route path="/products/category/:category" element={<Shop />} />
+          <Route path="/products/:productId" element={<Shop />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/checkout/success" element={<Confirmation />} />
+        </Routes>
+        <Footer />
+      </main>
+    </>
   );
 }
 

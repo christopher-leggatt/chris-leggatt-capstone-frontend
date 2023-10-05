@@ -11,12 +11,11 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 function Copyright(props) {
 
   document.title = "Sign-in / Register";
-
-
 
   return (
     <Typography
@@ -26,7 +25,7 @@ function Copyright(props) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit">
         Convenient Cannabis Inc
       </Link>{" "}
       {new Date().getFullYear()}
@@ -36,7 +35,9 @@ function Copyright(props) {
 }
 
 export default function SignIn() {
+
   const theme = useTheme();
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();   
   };
@@ -88,10 +89,11 @@ export default function SignIn() {
               label="Remember me"
             />
             <Button
-              type="submit"
+              // type="click"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
+              onClick={() => navigate("/")}
             >
               Sign In
             </Button>

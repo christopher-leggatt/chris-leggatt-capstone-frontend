@@ -23,9 +23,9 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const [value, setValue] = useState("description");
   const [count, setCount] = useState(1);
-  const product = useSelector((state) => state.products.currentProduct);
+  const product = useSelector((state) => state?.products?.currentProduct);
   const categorizedProducts = useSelector(
-    (state) => state.products.categorizedProducts
+    (state) => state?.products?.categorizedProducts
   );
 
   const handleChange = (event, newValue) => {
@@ -192,7 +192,7 @@ const ProductDetails = () => {
             columnGap: { xs: "16px", md: "24px" },
           }}
         >
-          {categorizedProducts
+          {categorizedProducts && product && categorizedProducts
             .filter((relatedProduct) => relatedProduct.id !== product.id)
             .slice(0, 4)
             .map((product, i) => (

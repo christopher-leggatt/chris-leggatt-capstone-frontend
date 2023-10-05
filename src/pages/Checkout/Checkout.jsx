@@ -24,7 +24,7 @@ const Checkout = () => {
   }, 0);
   const formattedTotalPrice = formatPrice(totalPrice);
   const stripePromise = loadStripe(
-    "pk_test_51LgU7yConHioZHhlAcZdfDAnV9643a7N1CMpxlKtzI1AUWLsRyrord79GYzZQ6m8RzVnVQaHsgbvN1qSpiDegoPi006QkO0Mlc"
+    "pk_test_51Nw7l8Cw7jRcWAe8jDuzAXZqjE6PnaZtgvroTBIKOCKDe7HSpUqDIxtRA2ZmjG7ElUvTsC4sOgI2BezHDslp8WV1009HYC3azO"
   );
 
   const testUser = {
