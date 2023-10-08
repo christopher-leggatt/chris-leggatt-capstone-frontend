@@ -28,7 +28,7 @@ const SiteHeader = () => {
 
   const navLinks = [
     ...navMenuItems,
-    { page: "Sign-in/Register", path: "signin" },
+    { page: "Sign-in/Register", path: "login" },
   ];
 
   const handleOpenNavMenu = (event) => {
@@ -204,7 +204,7 @@ const SiteHeader = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
-          <Link to={"/signin"} className="user-menu__menu-item">
+          <Link to={"/login"} className="user-menu__menu-item">
             <MenuItem component="article" className="user-menu__menu-item" onClick={handleCloseUserMenu}
 >
               <Typography
@@ -216,7 +216,7 @@ const SiteHeader = () => {
               </Typography>
             </MenuItem>
           </Link>
-          <Link to={"/signin"} className="user-menu__menu-item">
+          <Link to={"/login"} className="user-menu__menu-item">
             <MenuItem component="article" className="user-menu__menu-item" onClick={handleCloseUserMenu}
 >
               <Typography

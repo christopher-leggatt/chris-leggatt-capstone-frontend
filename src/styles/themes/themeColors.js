@@ -5,16 +5,66 @@
 // Pomegranate	#f44336	Danger
 // #e05a33 nav tabs
 
+export const brown = {
+  // Line Stroke
+  100: "#dcd6d5",
+  200: "#b8aeab",
+  // Border
+  300: "#958582",
+  400: "#715d58",
+  // Low Priority form Title/Text
+  500: "#4e342e",
+  600: "#3e2a25",
+  // Paragraph
+  700: "#2f1f1c",
+  800: "#1f1512",
+  // Main Text
+  900: "#100a09",
+};
+
+// Dark Green
 export const primary = {
-  100: "#d4f6d6",
-  200: "#a8edad",
-  300: "#7de585",
-  400: "#51dc5c",
-  500: "#26d333",
-  600: "#1ea929",
-  700: "#177f1f",
-  800: "#0f5414",
-  900: "#082a0a",
+  100: "#cce0cc",
+  200: "#99c199",
+  300: "#66a266",
+  400: "#338333",
+  500: "#006400",
+  600: "#005000",
+  700: "#003c00",
+  800: "#002800",
+  900: "#001400",
+  main: "#006400",
+  contrastText: "#ffffff",
+};
+
+// Light Green
+export const secondary = {
+  100: "#e0ffe0",
+  200: "#c2ffc2",
+  300: "#a3ffa3",
+  400: "#85ff85",
+  500: "#66ff66",
+  600: "#52cc52",
+  700: "#3d993d",
+  800: "#296629",
+  900: "#143314",
+  main: "#66ff66",
+  contrastText: "#ffffff",
+};
+
+export const light = {
+    100: "#fefdf9",
+    200: "#fdfaf3",
+    300: "#fcf8ec",
+    400: "#fbf5e6",
+    500: "#faf3e0",
+    600: "#c8c2b3",
+    700: "#969286",
+    800: "#64615a",
+    900: "#32312d",
+    main: "#faf3e0",
+    contrastText: brown[900]
+
 };
 
 export const dark = {
@@ -27,80 +77,56 @@ export const dark = {
   700: "#1d2314",
   800: "#13170e",
   900: "#0a0c07",
+  main: "#303a22",
+  contrastText: "#ffffff"
 };
 
-export const darkAccent = {
-  100: "#e9e8d4",
-  200: "#d3d2aa",
-  300: "#bebb7f",
-  400: "#a8a555",
-  500: "#928e2a",
-  600: "#757222",
-  700: "#585519",
-  800: "#3a3911",
-  900: "#1d1c08",
-};
-
-export const light = {
-  100: "#fdfdfd",
-  200: "#fafbfb",
-  300: "#f8faf9",
-  400: "#f5f8f7",
-  500: "#f3f6f5",
-  600: "#c2c5c4",
-  700: "#929493",
-  800: "#616262",
-  900: "#313131",
-};
-
-export const lightAccent = {
-  100: "#fef2cf",
-  200: "#fde69f",
-  300: "#fdd96e",
-  400: "#fccd3e",
-  500: "#fbc00e",
-  600: "#c99a0b",
-  700: "#977308",
-  800: "#644d06",
-  900: "#322603",
-};
-
+// Blue
 export const info = {
-  100: "#d5d6d3",
-  200: "#acaea7",
-  300: "#82857c",
-  400: "#595d50",
-  500: "#2f3424",
-  600: "#262a1d",
-  700: "#1c1f16",
-  800: "#13150e",
-  900: "#090a07",
+  50: "#f3f5f9",
+  100: "#DBF0FE",
+  200: "#B8DEFE",
+  300: "#94C9FE",
+  400: "#7AB6FD",
+  500: "#4E97FD",
+  600: "#3975D9",
+  700: "#2756B6",
+  800: "#183C92",
+  900: "#0E2979",
+  main: "#4E97FD",
+  contrastText: "#FFFFFF",
 };
 
+// Gold
 export const success = {
-  100: "#d9f1da",
-  200: "#b3e3b5",
-  300: "#8dd691",
-  400: "#67c86c",
-  500: "#41ba47",
-  600: "#349539",
-  700: "#27702b",
-  800: "#1a4a1c",
-  900: "#0d250e",
+    100: "#fff7cc",
+    200: "#ffef99",
+    300: "#ffe766",
+    400: "#ffdf33",
+    500: "#ffd700",
+    600: "#ccac00",
+    700: "#998100",
+    800: "#665600",
+    900: "#332b00",
+    contrastText: brown[900],
 };
 
+// Maroon
 export const warning = {
-  100: "#f2eecf",
-  200: "#e5dd9f",
-  300: "#d8cc6f",
-  400: "#cbbb3f",
-  500: "#beaa0f",
-  600: "#98880c",
-  700: "#726609",
-  800: "#4c4406",
-  900: "#262203",
+  50: "#f3f5f9",
+  100: "#F6F2ED",
+  200: "#F8DBD1",
+  300: "#EBBCB3",
+  400: "#D89C98",
+  600: "#A3545C",
+  700: "#883948",
+  800: "#6E2438",
+  900: "#5B162F",
+  main: "#BE7374",
+  contrastText: "#FFFFFF",
 };
 
+// Red
 export const error = {
   100: "#fdd9d7",
   200: "#fbb4af",
@@ -111,38 +137,26 @@ export const error = {
   700: "#922820",
   800: "#621b16",
   900: "#310d0b",
-};
-
-export const navbarMain = {
-  100: "#f9ded6",
-  200: "#f3bdad",
-  300: "#ec9c85",
-  400: "#e67b5c",
-  500: "#e05a33",
-  600: "#b34829",
-  700: "#86361f",
-  800: "#5a2414",
-  900: "#2d120a",
+  main: "#f44336",
+  contrastText: "#FFFFFF",
 };
 
 export const themeColors = {
   primary,
-  dark,
-  darkAccent,
-  light,
-  lightAccent,
+  secondary,
+  brown,  
   success,
   info,
   warning,
   error,
-  navbarMain,
-  divider: dark[200],
+  light,
+  divider: brown[200],
   background: {
-    default: dark[100],
+    default: light[500],
   },
   text: {
-    primary: dark[900],
-    secondary: dark[800],
-    disabled: dark[400],
+    primary: brown[900],
+    secondary: brown[800],
+    disabled: brown[400],
   },
 };
