@@ -1,27 +1,29 @@
-import { useSelector } from 'react-redux';
-import { selectCurrentToken } from '../state/authSlice';
-import jwtDecode from 'jwt-decode';
-import React from 'react';
+import { useSelector } from "react-redux";
+import { selectCurrentToken } from "../state/authSlice";
+import jwtDecode from "jwt-decode";
 
 const useAuth = () => {
-    const token = useSelector(selectCurrentToken);
-    let isAdmin = false;
-    let isMember = false;
-    let status = "default";
+  const token = useSelector(selectCurrentToken);
+  let isAdmin = false;
+  let isMember = false;
+  let status = "default";
 
-    if (token) {
-        const decoded = jwtDecode(token);
-        const{ username, roles } = decoded.memberInfo;
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+      const { username, role } = decoded.userInfo;
 
-        isAdmin = roles.includes('Admin');
-        isMember = roles.include('member');
+      isAdmin = role.includes("admin");
+      isMember = role.includes("member");
 
-        if (isAdmin) status = 'Admin';
-        if (isMember) status = 'member';
+      if (isAdmin) status = "admin";
+      if (isMember) status = "member";
 
-        return { username, roles, status, isAdmin, isMember };
+      return { username, role, status, isAdmin, isMember };
+    } catch (err) {
+      console.error("Invalid token", err);
     }
-  return { username: '', roles: [], isAdmin, isMember, status };
-}
+  }
+};
 
 export default useAuth;

@@ -1,16 +1,19 @@
 import { useCallback, useState } from "react";
-import { Button, Card, Box, styled } from "@mui/material";
-import { Link, useNavigate } from 'react-router-dom';
+import { Button, Card, Box, styled, SvgIcon } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { PageHeader, H6 } from "../../components/Typography/Typography";
-import { ReactComponent as Logo } from '../../assets/logo/convenient_cannabis_logo.svg';
-import SiteTextField from '../../components/SiteTextField/SiteTextField';
+import { ReactComponent as Logo } from "../../assets/logo/convenient_cannabis_logo.svg";
+import SiteTextField from "../../components/SiteTextField/SiteTextField";
 import SocialButtons from "../../components/SocialButtons/SocialButtons";
 import EyeToggleButton from "../../components/EyeToggleButton/EyeToggleButton";
 import FlexBox from "../../components/flexBox/FlexBox";
-import FlexRowCenter from '../../components/flexBox/FlexRowCenter';
+import FlexRowCenter from "../../components/flexBox/FlexRowCenter";
 import { useTheme } from "@mui/material/styles";
+import { useDispatch, useSelector } from "react-redux";
+import { setCredentials } from "../../state/authSlice";
+import api from "../../state/api";
 
 const fbStyle = {
   background: "#3B5998",
@@ -54,27 +57,54 @@ const Login = () => {
   const togglePasswordVisibility = useCallback(() => {
     setPasswordVisibility((visible) => !visible);
   }, []);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const handleFormSubmit = async (values) => {
-    console.log(values);
+    try {
+      const response = await api.post("/auth/login", {
+        username: values.email,
+        password: values.password,
+      });
+
+      if (response.data.token) {
+        dispatch(setCredentials({ accessToken: response.data.token }));
+
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error(
+        "Login failed:",
+        error.response?.data?.message || error.message
+      );
+    }
   };
+  
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues,
       onSubmit: handleFormSubmit,
       validationSchema: formSchema,
     });
+
   return (
-    <Wrapper elevation={3} passwordVisibility={passwordVisibility} sx={{
-        mx: "auto"
-    }}>
+    <Wrapper
+      elevation={3}
+      passwordVisibility={passwordVisibility}
+      sx={{
+        mx: "auto",
+      }}
+    >
       <form onSubmit={handleSubmit}>
-        <Logo
+        <SvgIcon
+          component={Logo}
           sx={{
             m: "auto",
             height: "24px",
-            '& path': {
-                fill: "theme.palette.primary.main"
-            }
+            fill: "theme.palette.primary.main",
+            color: "theme.palette.primary.main",
+            "& g & path": {
+              fill: "theme.palette.primary.main",
+            },
           }}
         />
 
@@ -141,7 +171,11 @@ const Login = () => {
       <FlexRowCenter mt="1.25rem">
         <Box>Don&apos;t have account?</Box>
         <Link to="/signup">
-          <H6 ml={1} borderBottom="1px solid" borderColor="theme.palette.grey.900">
+          <H6
+            ml={1}
+            borderBottom="1px solid"
+            borderColor="theme.palette.grey.900"
+          >
             Sign Up
           </H6>
         </Link>
@@ -156,7 +190,11 @@ const Login = () => {
       >
         Forgot your password?
         <Link href="/reset-password">
-          <H6 ml={1} borderBottom="1px solid" borderColor="theme.palette.brown.900">
+          <H6
+            ml={1}
+            borderBottom="1px solid"
+            borderColor="theme.palette.brown.900"
+          >
             Reset It
           </H6>
         </Link>

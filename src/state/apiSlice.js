@@ -1,54 +1,56 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { setCredentials } from './authSlice';
+import { createApi } from "@reduxjs/toolkit/query/react";
+import { setCredentials } from "./authSlice";
+import api from './api';
 
-const baseQuery = fetchBaseQuery({
-    baseUrl: process.env.REACT_APP_BASE_URL,
-    credentials: 'include',
-    prepareHeaders: (headers, { getState }) => {
-        const token = getState().auth.token;
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
+const path = "/login";
 
-        if (token) {
-            headers.set("authorization", `Bearer ${token}`);
-        }
-        return headers;
-    }
-})
+const baseQuery = async ({ baseUrl, path, method, body, headers }) => {
+  try {
+    const response = await api({
+      url: baseUrl + path,
+      method,
+      data: body,
+      headers,
+      withCredentials: true,
+    });
+    return { data: response.data };
+  } catch (error) {
+    return { error: error.response.data };
+  }
+};
+
+const prepareHeaders = (headers, { getState }) => {
+  const token = getState().auth.token;
+  if (token) {
+    headers["Authorization"] = `Bearer ${token}`;
+  }
+  return headers;
+};
 
 const baseQueryWithReauth = async (args, api, extraOptions) => {
-    // console.log(args) // request url, method, body
-    // console.log(api) // signal, dispatch, getState()
-    // console.log(extraOptions) //custom like {shout: true}
+  let result = await baseQuery(args);
 
-    let result = await baseQuery(args, api, extraOptions)
+  if (result?.error?.status === 403) {
+    const refreshResult = await baseQuery({
+      url: "/auth/refresh",
+      method: "GET",
+      headers: prepareHeaders({}, api.getState()),
+    });
 
-    // If you want, handle other status codes, too
-    if (result?.error?.status === 403) {
-        console.log('sending refresh token')
-
-        // send refresh token to get new access token 
-        const refreshResult = await baseQuery('/auth/refresh', api, extraOptions)
-
-        if (refreshResult?.data) {
-
-            // store the new token 
-            api.dispatch(setCredentials({ ...refreshResult.data }))
-
-            // retry original query with new access token
-            result = await baseQuery(args, api, extraOptions)
-        } else {
-
-            if (refreshResult?.error?.status === 403) {
-                refreshResult.error.data.message = "Your login has expired. "
-            }
-            return refreshResult
-        }
+    if (refreshResult?.data) {
+      api.dispatch(setCredentials({ ...refreshResult.data }));
+      result = await baseQuery(args);
+    } else {
+      return refreshResult;
     }
+  }
 
-    return result
-}
+  return result;
+};
 
 export const apiSlice = createApi({
-    baseQuery: baseQueryWithReauth,
-    tagTypes: ['Note', 'User'],
-    endpoints: builder => ({})
-})
+  baseQuery: baseQueryWithReauth,
+  tagTypes: ["User"],
+  endpoints: (builder) => ({}),
+});
