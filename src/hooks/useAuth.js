@@ -6,6 +6,7 @@ const useAuth = () => {
   const token = useSelector(selectCurrentToken);
   let isAdmin = false;
   let isMember = false;
+  let isGuest = false;
   let status = "default";
 
   if (token) {
@@ -15,11 +16,13 @@ const useAuth = () => {
 
       isAdmin = role.includes("admin");
       isMember = role.includes("member");
+      isGuest = role.includes("guest");
 
       if (isAdmin) status = "admin";
       if (isMember) status = "member";
+      if (isGuest) status = "guest";
 
-      return { username, role, status, isAdmin, isMember };
+      return { username, role, status, isAdmin, isMember, isGuest };
     } catch (err) {
       console.error("Invalid token", err);
     }

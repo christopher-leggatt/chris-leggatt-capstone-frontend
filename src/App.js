@@ -11,6 +11,7 @@ import About from "./pages/About/About";
 import Confirmation from "./pages/Confirmation/Confirmation";
 import AgeModal from "./components/AgeModal/AgeModal";
 import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 
 const ScrollToTop = () => {
@@ -50,7 +51,7 @@ function Content() {
           <Route path="/products/:productId" element={<Shop />} />
           <Route path="/about" element={<About />} />
           <Route path="/login" element={<Login />} />
-          {/* <Route path="/signin" element={<SignIn />} /> */}
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/success" element={<Confirmation />} />
         </Routes>

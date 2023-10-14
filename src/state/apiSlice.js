@@ -3,7 +3,7 @@ import { setCredentials } from "./authSlice";
 import api from './api';
 
 const baseUrl = process.env.REACT_APP_BACKEND_URL;
-const path = "/login";
+const path = "/auth/login";
 
 const baseQuery = async ({ baseUrl, path, method, body, headers }) => {
   try {

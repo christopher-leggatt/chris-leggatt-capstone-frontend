@@ -1,7 +1,6 @@
 import { useCallback, useState } from "react";
-import { Button, Card, Box, styled, SvgIcon } from "@mui/material";
+import { Button, Box, SvgIcon } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
-import * as yup from "yup";
 import { useFormik } from "formik";
 import { PageHeader, H6 } from "../../components/Typography/Typography";
 import { ReactComponent as Logo } from "../../assets/logo/convenient_cannabis_logo.svg";
@@ -10,80 +9,32 @@ import SocialButtons from "../../components/SocialButtons/SocialButtons";
 import EyeToggleButton from "../../components/EyeToggleButton/EyeToggleButton";
 import FlexBox from "../../components/flexBox/FlexBox";
 import FlexRowCenter from "../../components/flexBox/FlexRowCenter";
-import { useTheme } from "@mui/material/styles";
-import { useDispatch, useSelector } from "react-redux";
-import { setCredentials } from "../../state/authSlice";
-import api from "../../state/api";
-
-const fbStyle = {
-  background: "#3B5998",
-  color: "white",
-};
-const googleStyle = {
-  background: "#4285F4",
-  color: "white",
-};
-export const Wrapper = styled(({ children, passwordVisibility, ...rest }) => (
-  <Card {...rest}>{children}</Card>
-))(({ theme, passwordVisibility }) => ({
-  width: 500,
-  padding: "2rem 3rem",
-  [theme.breakpoints.down("md")]: {
-    width: "100%",
-  },
-  ".passwordEye": {
-    color: passwordVisibility
-      ? theme.palette.brown[600]
-      : theme.palette.brown[400],
-  },
-  ".facebookButton": {
-    marginBottom: 10,
-    ...fbStyle,
-    "&:hover": fbStyle,
-  },
-  ".googleButton": {
-    ...googleStyle,
-    "&:hover": googleStyle,
-  },
-  ".agreement": {
-    marginTop: 12,
-    marginBottom: 24,
-  },
-}));
+// import { useTheme } from "@mui/material/styles";
+import { useDispatch } from "react-redux";
+import {
+  Wrapper,
+  handleLoginFormSubmit,
+  initialValues,
+  formSchema,
+} from "./LoginUtils";
 
 const Login = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
-  const theme = useTheme();
+  // const theme = useTheme();
   const togglePasswordVisibility = useCallback(() => {
     setPasswordVisibility((visible) => !visible);
   }, []);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleFormSubmit = async (values) => {
-    try {
-      const response = await api.post("/auth/login", {
-        username: values.email,
-        password: values.password,
-      });
 
-      if (response.data.token) {
-        dispatch(setCredentials({ accessToken: response.data.token }));
-
-        navigate("/dashboard");
-      }
-    } catch (error) {
-      console.error(
-        "Login failed:",
-        error.response?.data?.message || error.message
-      );
-    }
-  };
-  
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
-      initialValues,
-      onSubmit: handleFormSubmit,
-      validationSchema: formSchema,
+      initialValues: initialValues,
+      onSubmit: (values) => {
+        console.log("🚀 ~ file: Login.jsx:34 ~ Login ~ values:", values)
+        handleLoginFormSubmit(values, dispatch, navigate);
+      },
+      validationSchema: formSchema,      
     });
 
   return (
@@ -115,17 +66,17 @@ const Login = () => {
         <SiteTextField
           mb={1.5}
           fullWidth
-          name="email"
+          name="login"
           size="small"
-          type="email"
+          type="text"
           variant="outlined"
           onBlur={handleBlur}
-          value={values.email}
+          value={values.login}
           onChange={handleChange}
-          label="Email or Phone Number"
-          placeholder="example@mail.com"
-          error={!!touched.email && !!errors.email}
-          helperText={touched.email && errors.email}
+          label="Email or Username"
+          placeholder="Example or example@mail.com"
+          error={!!touched.login && !!errors.login}
+          helperText={touched.login && errors.login}
         />
 
         <SiteTextField
@@ -202,12 +153,5 @@ const Login = () => {
     </Wrapper>
   );
 };
-const initialValues = {
-  email: "",
-  password: "",
-};
-const formSchema = yup.object().shape({
-  password: yup.string().required("Password is required"),
-  email: yup.string().email("invalid email").required("Email is required"),
-});
+
 export default Login;
