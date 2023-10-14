@@ -10,6 +10,8 @@ import Footer from "./components/global/Footer/Footer";
 import About from "./pages/About/About";
 import Confirmation from "./pages/Confirmation/Confirmation";
 import AgeModal from "./components/AgeModal/AgeModal";
+import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 
 const ScrollToTop = () => {
@@ -34,7 +36,7 @@ function App() {
 
 function Content() {
   const { pathname } = useLocation();
-  const [verified, setVerified] = useState(false);
+  const [verified, setVerified] = useState(true);
 
   return (
     <>
@@ -48,7 +50,8 @@ function Content() {
           <Route path="/products/category/:category" element={<Shop />} />
           <Route path="/products/:productId" element={<Shop />} />
           <Route path="/about" element={<About />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/checkout/success" element={<Confirmation />} />
         </Routes>

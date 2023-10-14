@@ -14,7 +14,7 @@ export const cartSlice = createSlice({
     // },
 
     addToCart: (state, action) => {
-      const foundProduct = state.cart.find(
+      const foundProduct = state?.cart?.find(
         (product) => product.id === action.payload.product.id
       );
       if (foundProduct) {
@@ -31,7 +31,7 @@ export const cartSlice = createSlice({
     },
 
     increaseCount: (state, action) => {
-      state.cart = state.cart.map((product) => {
+      state.cart = state?.cart?.map((product) => {
         if (product.id === action.payload.id) {
           if (!product.count) {
             product.count = 1;
@@ -43,7 +43,7 @@ export const cartSlice = createSlice({
     },
 
     decreaseCount: (state, action) => {
-      state.cart = state.cart.map((product) => {
+      state.cart = state?.cart?.map((product) => {
         if (product.id === action.payload.id && !!product.count && product.count > 1) {
           product.count--;
         }

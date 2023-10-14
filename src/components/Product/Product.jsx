@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
-import { addToCart } from "../../state";
+import { addToCart } from "../../state/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { formatPrice } from "../../utils";
 

@@ -8,7 +8,7 @@ import { useTheme } from "@mui/material/styles";
 import Payment from "../../components/Payment/Payment";
 import Shipping from "../../components/Shipping/Shipping";
 import { loadStripe } from "@stripe/stripe-js";
-import { createOrder } from "../../order";
+import { createOrder } from "../../state/orderSlice";
 import { useDispatch } from "react-redux";
 import { formatPrice } from "../../utils";
 

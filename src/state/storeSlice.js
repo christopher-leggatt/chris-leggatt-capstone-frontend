@@ -10,7 +10,7 @@ const initialState = {
 // Thunks
 
 export const getProducts = createAsyncThunk(
-  "products/getProducts",
+  "getProducts",
   async () => {
     try {
       const response = await api.get("/products");
@@ -26,7 +26,7 @@ export const getProducts = createAsyncThunk(
 );
 
 export const getCategorizedProducts = createAsyncThunk(
-  "products/getCategorizedProducts",
+  "getCategorizedProducts",
 
   async (category) => {
     try {
@@ -40,7 +40,7 @@ export const getCategorizedProducts = createAsyncThunk(
 );
 
 export const getCurrentProduct = createAsyncThunk(
-  "products/getCurrentProduct",
+  "getCurrentProduct",
 
   async (id) => {
     try {
@@ -55,7 +55,7 @@ export const getCurrentProduct = createAsyncThunk(
 );
 
 export const createProduct = createAsyncThunk(
-  "products/createProduct",
+  "createProduct",
 
   async (product) => {
     try {
@@ -69,7 +69,7 @@ export const createProduct = createAsyncThunk(
 );
 
 export const editProduct = createAsyncThunk(
-  "products/editProduct",
+  "editProduct",
 
   async ({ id, data }) => {
     try {
@@ -83,7 +83,7 @@ export const editProduct = createAsyncThunk(
 );
 
 export const deleteProduct = createAsyncThunk(
-  "products/deleteProduct",
+  "deleteProduct",
 
   async (id) => {
     try {
@@ -96,7 +96,7 @@ export const deleteProduct = createAsyncThunk(
   }
 );
 
-const productsSlice = createSlice({
+const storeSlice = createSlice({
   name: "products",
   // initialState: { products: [] },
   initialState,
@@ -137,4 +137,4 @@ const productsSlice = createSlice({
   },
 });
 
-export default productsSlice.reducer;
+export default storeSlice.reducer;
