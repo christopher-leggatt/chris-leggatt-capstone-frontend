@@ -23,7 +23,7 @@ export const StyledNavLink = styled(({ children, isCurrentPath, ...rest }) => (
   justifyContent: "space-between",
   borderColor: isCurrentPath ? theme.palette.primary.main : "transparent",
   "& .nav-icon": {
-    color: isCurrentPath ? theme.palette.primary.main : theme.palette.grey[600],
+    color: isCurrentPath ? theme.palette.primary.main : theme.palette.brown[600],
   },
   "&:hover": {
     borderColor: theme.palette.primary.main,

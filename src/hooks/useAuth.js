@@ -12,7 +12,7 @@ const useAuth = () => {
   if (token) {
     try {
       const decoded = jwtDecode(token);
-      const { username, role } = decoded.userInfo;
+      const { userId, role } = decoded.userInfo;
 
       isAdmin = role.includes("admin");
       isMember = role.includes("member");
@@ -22,7 +22,7 @@ const useAuth = () => {
       if (isMember) status = "member";
       if (isGuest) status = "guest";
 
-      return { username, role, status, isAdmin, isMember, isGuest };
+      return { userId, role, status, isAdmin, isMember, isGuest };
     } catch (err) {
       console.error("Invalid token", err);
     }

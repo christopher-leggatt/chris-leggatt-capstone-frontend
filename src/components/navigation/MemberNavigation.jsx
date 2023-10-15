@@ -2,9 +2,15 @@ import { Fragment } from "react";
 import { Typography } from "@mui/material";
 import FlexBox from "../flexBox/FlexBox";
 import { linkList, MainContainer, StyledNavLink } from "./MemberNavigationUtils";
+import { useLocation } from "react-router-dom";
 
-const MemberNavigation = ({ pathname }) => {
-  
+const MemberNavigation = () => {
+
+  const location = useLocation();
+  const pathname = location.pathname;
+
+  console.log('Pathname:', pathname);
+
   return (
     <MainContainer>
       {linkList.map((item) => (
@@ -17,7 +23,7 @@ const MemberNavigation = ({ pathname }) => {
             <StyledNavLink
               to={item.route}
               key={item.title}
-              isCurrentPath={pathname.includes(item.route)}
+              isCurrentPath={pathname === item.route}
             >
               <FlexBox alignItems="center" gap={1}>
                 <item.icon

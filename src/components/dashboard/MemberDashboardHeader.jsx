@@ -1,7 +1,7 @@
 import { Box, styled } from "@mui/material";
 import { SectionHeader } from "../Typography/Typography";
-import { FlexBox } from "components/flex-box";
-import useWindowSize from "hooks/useWindowSize";
+import FlexBox from "../flexBox/FlexBox";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const StyledBox = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -29,7 +29,7 @@ const UserDashboardHeader = ({ title, button, navigation, ...props }) => {
       <FlexBox mt={2} className="headerHold">
         <FlexBox alignItems="center">
           {props.icon && <props.icon color="primary" />}
-          <SectionHeader ml={1.5} my="0px" lineHeight="1" whiteSpace="pre">
+          <SectionHeader ml={1.5} my="0px" lineHeight="1" whiteSpace="pre" color="text.primary">
             {title}
           </SectionHeader>
         </FlexBox>        

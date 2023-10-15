@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
 import { styled } from "@mui/material";
 import clsx from "clsx";
 
@@ -10,15 +10,17 @@ const StyledLink = styled(Link)(({ theme, active }) => ({
     color: `${theme.palette.primary.main} !important`,
   },
 }));
+
 const NavLink = ({ route, children, style, className, ...props }) => {
-  const { pathname } = useParams();
+  const location = useLocation();
+  const pathname = location.pathname;
+
   const checkRouteMatch = () => {
-    if (route === `/${pathname}`) return pathname === route;
-    return pathname.includes(route);
+    if (route === pathname) return pathname === route;
   };
 
-  // active route
   const currentRoute = checkRouteMatch();
+  
   return (
     <StyledLink
       to={route}
