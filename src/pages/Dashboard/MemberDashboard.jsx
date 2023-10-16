@@ -40,7 +40,7 @@ import {
 // ======================================================
 
 const MemberDashboard = () => {
-  const { userId, role, status, isAdmin, isMember, isGuest } = useAuth;
+  const { userId, role, status, isAdmin, isMember, isGuest } = useAuth();
   const [userInfo, setUserInfo] = useState({});
   const token = useSelector((state) => state?.auth.token);
   const downMd = useMediaQuery((theme) => theme.breakpoints.down("md"));

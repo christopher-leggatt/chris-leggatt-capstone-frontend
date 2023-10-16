@@ -113,7 +113,7 @@ let theme = createTheme({
       fontSize: "10px",
       lineHeight: 1.4,
     },
-    bodyCopyRegular: {
+    bodycopy: {
       fontWeight: 400,
       fontSize: "14px",
       lineHeight: 1.2857,

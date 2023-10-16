@@ -28,7 +28,7 @@ export const typography = {
     fontSize: "10px",
     lineHeight: 1.5,
   },
-  bodyCopyRegular: {
+  bodycopy: {
     fontWeight: 400,
     fontSize: "14px",
   },
