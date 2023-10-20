@@ -31,7 +31,9 @@ export const getCategorizedProducts = createAsyncThunk(
   async (category) => {
     try {
       const response = await api.get(`/products/category/${category}`);
-      return response.data;
+      const { data } = response;
+      console.log(response.data);
+      return data;
     } catch (error) {
       console.error("Error fetching products:", error);
       throw error;

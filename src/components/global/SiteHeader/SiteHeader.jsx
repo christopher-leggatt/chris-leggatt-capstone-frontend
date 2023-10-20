@@ -12,14 +12,22 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
-import { ReactComponent as LogoIcon } from '../../../assets/logo/convenient_cannabis_logo.svg';
+import { ReactComponent as LogoIcon } from "../../../assets/logo/convenient_cannabis_logo.svg";
+import { logOut } from "../../../state/authSlice";
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import useAuth from "../../../hooks/useAuth";
 
 const SiteHeader = () => {
   const navigate = useNavigate();
-  const [anchorElNav, setAnchorElNav] = useState( null );
-  const [anchorElUser, setAnchorElUser] = useState( null );
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  // const [ admin, setAdmin ] = useState("");
   const theme = useTheme();
-
+  const token = useDispatch((state) => state?.auth?.token);
+  const { pathname } = useLocation();
+  const { status, isAdmin, isMember } = useAuth();
+  console.log("🚀 ~ file: SiteHeader.jsx:30 ~ SiteHeader ~ isMember:", isMember)
   const navMenuItems = [
     { page: "Home", path: "" },
     { page: "About Us", path: "about" },
@@ -28,7 +36,7 @@ const SiteHeader = () => {
 
   const navLinks = [
     ...navMenuItems,
-    { page: "Sign-in/Register", path: "login" },
+    { page: !isMember ? "Sign-in/Register" : "Test User", path: !isMember ? "login" : "dashboard" },
   ];
 
   const handleOpenNavMenu = (event) => {
@@ -45,6 +53,16 @@ const SiteHeader = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleLogout = () => {
+    setAnchorElUser(null);
+    logOut();
+  }  
+
+  if (pathname === "/dashboard" && isAdmin === true) {
+    return null;
+  };
+
   return (
     <AppBar
       component="header"
@@ -60,7 +78,7 @@ const SiteHeader = () => {
         color: (theme) => theme.palette.primary.contrastText,
         columnGap: { xs: "16px", md: "24px" },
         px: { xs: "16px", md: "24px", lg: "130px" },
-        py: { xs: "16px", md: "24px" },
+        py: "11px",
       }}
     >
       {/* MUI mobile hamburger nav menu */}
@@ -75,7 +93,6 @@ const SiteHeader = () => {
         <IconButton
           className="nav-menu__menu-btn"
           aria-label="navigation menu"
-          aria-controls="menu-appbar"
           aria-haspopup="true"
           onClick={handleOpenNavMenu}
         >
@@ -119,7 +136,7 @@ const SiteHeader = () => {
             >
               <MenuItem component="article" className="nav-menu__menu-item">
                 <Typography
-                  variant="body1"
+                  variant="bodyCopy"
                   component="p"
                   className="nav-menu__menu-item-text"
                 >
@@ -141,10 +158,8 @@ const SiteHeader = () => {
         }}
       >
         <Link to="/" className="header__company-logo-link">
-          <LogoIcon
-            className="header__company-logo"            
-          />
-        </Link>        
+          <LogoIcon className="header__company-logo" />
+        </Link>
       </Box>
 
       <Box
@@ -175,9 +190,8 @@ const SiteHeader = () => {
           alignItems: "center",
         }}
       >
-        {" "}
         <IconButton
-          className="user-menu__menu-btn"         
+          className="user-menu__menu-btn"
           onClick={handleOpenUserMenu}
         >
           <AccountCircle
@@ -204,11 +218,15 @@ const SiteHeader = () => {
           open={Boolean(anchorElUser)}
           onClose={handleCloseUserMenu}
         >
+          {!isMember ?
           <Link to={"/login"} className="user-menu__menu-item">
-            <MenuItem component="article" className="user-menu__menu-item" onClick={handleCloseUserMenu}
->
+            <MenuItem
+              component="article"
+              className="user-menu__menu-item"
+              onClick={handleCloseUserMenu}
+            >
               <Typography
-                variant="body1"
+                variant="bodyCopy"
                 component="p"
                 className="user-menu__menu-item-text"
               >
@@ -216,18 +234,40 @@ const SiteHeader = () => {
               </Typography>
             </MenuItem>
           </Link>
-          <Link to={"/login"} className="user-menu__menu-item">
-            <MenuItem component="article" className="user-menu__menu-item" onClick={handleCloseUserMenu}
->
+          : 
+          <Link to={"/dashboard"} className="user-menu__menu-item">
+            <MenuItem
+              component="article"
+              className="user-menu__menu-item"
+              onClick={handleCloseUserMenu}
+            >
               <Typography
-                variant="body1"
+                variant="bodyCopy"
                 component="p"
                 className="user-menu__menu-item-text"
               >
-                My Account
+                Dashboard
               </Typography>
             </MenuItem>
           </Link>
+          }
+          {isMember ? 
+          <Link to={"/"} className="user-menu__menu-item">
+            <MenuItem
+              component="article"
+              className="user-menu__menu-item"
+              onClick={handleLogout}
+            >
+              <Typography
+                variant="bodyCopy"
+                component="p"
+                className="user-menu__menu-item-text"
+              >
+                Logout
+              </Typography>
+            </MenuItem>
+          </Link>
+          : null}
         </Menu>
       </Box>
     </AppBar>

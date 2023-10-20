@@ -204,7 +204,7 @@ export const H6 = ({
   );
 };
 
-export const BodyCopyRegular = ({
+export const BodyCopy = ({
   children,
   className,
   ellipsis,

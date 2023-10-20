@@ -20,6 +20,8 @@ export const brown = {
   800: "#1f1512",
   // Main Text
   900: "#100a09",
+  light: "#b8aeab",
+
 };
 
 // Dark Green
@@ -34,6 +36,7 @@ export const primary = {
   800: "#002800",
   900: "#001400",
   main: "#006400",
+  light: "#99c199",
   contrastText: "#ffffff",
 };
 

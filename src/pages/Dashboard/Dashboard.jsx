@@ -1,12 +1,16 @@
-import { PageHeader } from "../../components/Typography/Typography";
 import useAuth from "../../hooks/useAuth";
+import MemberDashboard from "./MemberDashboard";
+import AdminDashboard from "./AdminDashboard";
 
 const Dashboard = () => {
-    const { isAdmin, isMember } = useAuth;
+    const { status } = useAuth();
+    if (status) {
+      console.log(status);
+    }
   return (
-    <div>
-        {isAdmin ? <PageHeader>This is the Admin Dashboard!</PageHeader> : <PageHeader>This is the Member Dashboard!</PageHeader> }      
-    </div>
+    <>
+        {status && status === "admin" ? <AdminDashboard /> : <MemberDashboard /> }      
+    </>
   )
 }
 

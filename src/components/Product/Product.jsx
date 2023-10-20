@@ -122,7 +122,7 @@ const Product = ({ product }) => {
           <Typography
             className="product__name"
             fontWeight="bold"
-            variant="bodyCopyRegular"
+            variant="bodycopy"
             sx={{
               display: "-webkit-box",
               overflow: "hidden",

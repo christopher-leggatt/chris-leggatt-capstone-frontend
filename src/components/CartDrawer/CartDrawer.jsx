@@ -167,7 +167,7 @@ const CartDrawer = () => {
                   <Typography
                     className="list-item__item-name"
                     fontWeight="bold"
-                    variant="bodyCopyRegular"
+                    variant="bodycopy"
                   >
                     {product.name}
                   </Typography>
