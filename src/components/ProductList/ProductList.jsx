@@ -12,9 +12,9 @@ const ProductList = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const [value, setValue] = useState("all");
-  const products = useSelector((state) => state.products.products.products);
+  const products = useSelector((state) => state?.store?.products?.products);
   const categorizedProducts = useSelector(
-    (state) => state.products.categorizedProducts
+    (state) => state?.store?.categorizedProducts
   );
 
   const breakPoint = useMediaQuery("(min-width:768px)");

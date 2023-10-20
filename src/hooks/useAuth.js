@@ -28,8 +28,8 @@ const useAuth = () => {
       console.error("Invalid token", err);
     }
   }
+  return { userId: null, role: null, status: "default", isAdmin: false, isMember: false, isGuest: false };
 
-  // return { userId: null, role: null, status: "default", isAdmin: false, isMember: false, isGuest: false };
 };
 
 export default useAuth;

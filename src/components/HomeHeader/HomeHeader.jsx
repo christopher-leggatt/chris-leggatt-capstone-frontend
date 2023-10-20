@@ -12,7 +12,7 @@ const HomeHeader = () => {
         <source src="http://localhost:5050/videos/convenient_cannabis.mp4" type="video/mp4" />
       </video>
       <div className="home-header__overlay-content">
-        <h1 className='home-header__page-header' style={{ fontStyle: 'Newsreader Variable'}} >Welcome to Convenient Cannabis</h1>
+        <h1 className='home-header__page-header' style={{ fontStyle: 'Newsreader Variable', color: 'theme.palette.text.primary'}} >Welcome to Convenient Cannabis</h1>
         <p className='home-header__page-content'>Premium Cannabis Products, Tailored for You.</p>
         <Button variant="contained" color="primary" size="large" onClick={() => navigate('/products')}>
           Shop Now

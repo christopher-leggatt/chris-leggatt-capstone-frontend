@@ -157,17 +157,17 @@ export const DataListTable = ({ dataList, tableHeading, type }) => {
         }}
       >
         <Table>
+          {/* recent purchase table body */}
           <TableHeader
             order={order}
             orderBy={orderBy}
-            heading={tableHeading}
+            heading={type === "RECENT_PURCHASE" ? recentPurchaseTableHeading : stockOutTableHeading}
             onRequestSort={handleRequestSort}
           />
-          {/* recent purchase table body */}
-          {recentPurchase && (
+          {type === "RECENT_PURCHASE" && (
             <TableBody>
               {filteredList.map((row, index) => {
-                const { id, amount, payment, product } = row;
+                const { id, product, payment, amount } = row;
                 return (
                   <StyledTableRow key={index}>
                     <StyledTableCell align="left">{id}</StyledTableCell>
@@ -197,7 +197,7 @@ export const DataListTable = ({ dataList, tableHeading, type }) => {
                       </StatusWrapper>
                     </StyledTableCell>
 
-                    <StyledTableCell align="center">$${amount}</StyledTableCell>
+                    <StyledTableCell align="center">${amount}</StyledTableCell>
                   </StyledTableRow>
                 );
               })}
@@ -221,7 +221,7 @@ export const DataListTable = ({ dataList, tableHeading, type }) => {
                       {stock}
                     </StyledTableCell>
 
-                    <StyledTableCell align="center">$${amount}</StyledTableCell>
+                    <StyledTableCell align="center">${amount}</StyledTableCell>
                   </StyledTableRow>
                 );
               })}
@@ -259,33 +259,33 @@ export const recentPurchaseTableHeading = [
 export const recentPurchaseItems = [
   {
     id: "#6d3wedo5",
-    amount: 152.25,
-    payment: "Success",
     product: "Aavic Headphone",
+    payment: "Success",
+    amount: 152.25,
   },
   {
     id: "#6d3wedo6",
-    amount: 125.25,
-    payment: "Pending",
     product: "Nike Shoes",
+    payment: "Pending",
+    amount: 125.25,
   },
   {
     id: "#6d3wedo7",
-    amount: 115.25,
-    payment: "Success",
     product: "Premium Shirt For Men",
+    payment: "Success",
+    amount: 115.25,
   },
   {
     id: "#6d3wedo8",
-    amount: 97.25,
-    payment: "Pending",
     product: "Polo T-shirt",
+    payment: "Pending",
+    amount: 97.25,
   },
   {
     id: "#6d3wedo9",
-    amount: 255.25,
-    payment: "Success",
     product: "Jeans Pant",
+    payment: "Success",
+    amount: 255.25,
   },
 ];
 
@@ -313,45 +313,45 @@ export const stockOutTableHeading = [
   {
     id: "product",
     label: "Product",
-    alignRight: false,
+    align: "left",
   },
   {
     id: "stock",
     label: "Stock",
-    alignRight: false,
+    align: "center",
   },
   {
     id: "amount",
     label: "Amount",
-    alignCenter: true,
+    align: "center",
   },
 ];
 
 export const stockOutItems = [
   {
-    amount: 152.25,
-    stock: "00",
     product: "Samsung Glaxy-M1",
+    stock: "00",
+    amount: 152.25,
   },
   {
-    amount: 125.25,
-    stock: "00",
     product: "Nike Shoes",
+    stock: "00",
+    amount: 125.25,
   },
   {
-    amount: 115.25,
-    stock: "00",
     product: "Premium Shirt For Men",
+    stock: "00",
+    amount: 115.25,
   },
   {
-    amount: 97.25,
-    stock: "00",
     product: "Polo T-shirt",
+    stock: "00",
+    amount: 97.25,
   },
   {
-    amount: 255.25,
-    stock: "00",
     product: "Jeans Pant",
+    stock: "00",
+    amount: 255.25,
   },
 ];
 
@@ -378,3 +378,5 @@ export const StockOutProducts = ({ data }) => {
     </Card>
   );
 };
+
+

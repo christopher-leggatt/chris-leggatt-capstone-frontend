@@ -23,9 +23,9 @@ const ProductDetails = () => {
   const { productId } = useParams();
   const [value, setValue] = useState("description");
   const [count, setCount] = useState(1);
-  const product = useSelector((state) => state?.products?.currentProduct);
+  const product = useSelector((state) => state?.store?.currentProduct);
   const categorizedProducts = useSelector(
-    (state) => state?.products?.categorizedProducts
+    (state) => state?.store?.categorizedProducts
   );
 
   const handleChange = (event, newValue) => {
@@ -130,8 +130,9 @@ const ProductDetails = () => {
               startIcon={<Add />}
               color="primary"
               size="medium"
-              onClick={() => dispatch(addToCart({ product, count }))}
-            >
+              onClick={() =>
+                dispatch(addToCart({ product: { ...product, count } }))
+              }            >
               Add to Cart
             </Button>
           </Box>

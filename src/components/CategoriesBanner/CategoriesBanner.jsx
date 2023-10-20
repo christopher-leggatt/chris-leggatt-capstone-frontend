@@ -62,7 +62,7 @@ const CategoriesBanner = ({ chunkedCategory }) => {
                   variant="subHeaderExtraSmall"
                   // component="h4"
                   sx={{
-                    color: (theme) => theme.palette.dark.light,
+                    color: (theme) => theme.palette.text.primary,
                     textTransform: "uppercase",
                   }}
                 >

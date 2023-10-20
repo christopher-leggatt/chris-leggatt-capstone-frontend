@@ -34,7 +34,7 @@ const TableHeader = (props) => {
       }}
     >
       <TableRow>
-        {!hideSelectBtn && (
+        {hideSelectBtn && (
           <StyledTableCell align="left">
             <Checkbox
               color="info"
