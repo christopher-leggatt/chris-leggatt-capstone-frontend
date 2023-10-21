@@ -5,7 +5,7 @@
 // Pomegranate	#f44336	Danger
 // #e05a33 nav tabs
 
-export const brown = {
+const brown = {
   // Line Stroke
   100: "#dcd6d5",
   200: "#b8aeab",
@@ -25,7 +25,7 @@ export const brown = {
 };
 
 // Dark Green
-export const primary = {
+const primary = {
   100: "#cce0cc",
   200: "#99c199",
   300: "#66a266",
@@ -41,7 +41,7 @@ export const primary = {
 };
 
 // Light Green
-export const secondary = {
+const secondary = {
   100: "#e0ffe0",
   200: "#c2ffc2",
   300: "#a3ffa3",
@@ -55,7 +55,7 @@ export const secondary = {
   contrastText: "#ffffff",
 };
 
-export const light = {
+const light = {
     100: "#fefdf9",
     200: "#fdfaf3",
     300: "#fcf8ec",
@@ -70,7 +70,7 @@ export const light = {
 
 };
 
-export const dark = {
+const dark = {
   100: "#d6d8d3",
   200: "#acb0a7",
   300: "#83897a",
@@ -85,7 +85,7 @@ export const dark = {
 };
 
 // Blue
-export const info = {
+const info = {
   50: "#f3f5f9",
   100: "#DBF0FE",
   200: "#B8DEFE",
@@ -101,7 +101,7 @@ export const info = {
 };
 
 // Gold
-export const success = {
+const success = {
     100: "#fff7cc",
     200: "#ffef99",
     300: "#ffe766",
@@ -115,7 +115,7 @@ export const success = {
 };
 
 // Maroon
-export const warning = {
+const warning = {
   50: "#f3f5f9",
   100: "#F6F2ED",
   200: "#F8DBD1",
@@ -130,7 +130,7 @@ export const warning = {
 };
 
 // Red
-export const error = {
+const error = {
   100: "#fdd9d7",
   200: "#fbb4af",
   300: "#f88e86",
@@ -153,13 +153,14 @@ export const themeColors = {
   warning,
   error,
   light,
+  dark,
   divider: brown[200],
   background: {
     default: light[500],
   },
   text: {
     primary: brown[900],
-    secondary: brown[800],
+    secondary: brown[700],
     disabled: brown[400],
   },
 };
