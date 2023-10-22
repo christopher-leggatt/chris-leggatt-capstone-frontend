@@ -1,12 +1,12 @@
-import { Box, Typography, Card, CardContent, Grid } from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { InfoBox, InfoImage, ImageFrame } from "./AboutStyled";
+import { CardContent, Grid } from "@mui/material";
+import { InfoImage, ImageFrame } from "./AboutStyled";
+import InfoBox from "./InfoBox";
 import {
   BodyCopy,
   PageHeader,
   SubheaderMedium,
   SubheaderSmall,
-  H6
+  H6,
 } from "../../components/Typography/Typography";
 import owner1 from "../../assets/images/owner1.png";
 import owner2 from "../../assets/images/owner2.png";
@@ -35,11 +35,24 @@ const AboutUs = () => {
         py={8}
         ml={0}
       >
-        <Grid item xs={12} md={5} height="200px" pr={9} my={4} sx={{
-          position: "relative",
-          top: "-24px"
-        }} pt={0}>
-          <FlexBetween height="100%" flexDirection="column" alignItems="flex-start" >
+        <Grid
+          item
+          xs={12}
+          md={5}
+          height="200px"
+          pr={9}
+          my={4}
+          sx={{
+            position: "relative",
+            top: "-24px",
+          }}
+          pt={0}
+        >
+          <FlexBetween
+            height="100%"
+            flexDirection="column"
+            alignItems="flex-start"
+          >
             <PageHeader variant="h1" gutterBottom>
               ABOUT US
             </PageHeader>
@@ -59,11 +72,14 @@ const AboutUs = () => {
               width: "15%",
             }}
           >
-            <SubheaderSmall variant="h2" sx={{
-              borderBottom: 2,
-              borderColor: "brown.400",
-              color: "brown.700"
-            }} underlined>
+            <SubheaderSmall
+              variant="h2"
+              sx={{
+                borderBottom: 2,
+                borderColor: "brown.400",
+                color: "brown.700",
+              }}
+            >
               NATHAN FLEMING
             </SubheaderSmall>
             <H6 color="brown.300">OWNER, IRRICANA</H6>
@@ -72,6 +88,9 @@ const AboutUs = () => {
             sx={{
               border: 1,
               borderColor: "divider",
+              "&:hover": {
+                boxShadow: (theme) => theme.shadows[3],
+              },
             }}
           >
             <InfoImage image={owner1} />
@@ -80,6 +99,9 @@ const AboutUs = () => {
             sx={{
               border: 1,
               borderColor: "divider",
+              "&:hover": {
+                boxShadow: (theme) => theme.shadows[3],
+              },
             }}
           >
             <InfoImage image={owner2} />
@@ -93,12 +115,14 @@ const AboutUs = () => {
               width: "15%",
             }}
           >
-            <SubheaderSmall variant="h2" sx={{
-              borderBottom: 2,
-              borderColor: "brown.400",
-              color: "brown.700"
-
-            }}>
+            <SubheaderSmall
+              variant="h2"
+              sx={{
+                borderBottom: 2,
+                borderColor: "brown.400",
+                color: "brown.700",
+              }}
+            >
               ZOE FLEMING
             </SubheaderSmall>
             <H6 color="brown.300">OWNER, OYEN</H6>
@@ -113,11 +137,14 @@ const AboutUs = () => {
               width: "15%",
             }}
           >
-            <SubheaderSmall variant="h2" sx={{
-              borderBottom: 2,
-              borderColor: "brown.400",
-              color: "brown.700"
-            }} underlined>
+            <SubheaderSmall
+              variant="h2"
+              sx={{
+                borderBottom: 2,
+                borderColor: "brown.400",
+                color: "brown.700",
+              }}
+            >
               IRRICANA
             </SubheaderSmall>
             <H6 color="brown.300">LOCATION</H6>
@@ -126,6 +153,9 @@ const AboutUs = () => {
             sx={{
               border: 1,
               borderColor: "divider",
+              "&:hover": {
+                boxShadow: (theme) => theme.shadows[3],
+              },
             }}
           >
             <InfoImage image={location1} />
@@ -134,9 +164,12 @@ const AboutUs = () => {
             sx={{
               border: 1,
               borderColor: "divider",
+              "&:hover": {
+                boxShadow: (theme) => theme.shadows[3],
+              },
             }}
           >
-            <InfoImage image={location1} />
+            <InfoImage image={location2} />
           </ImageFrame>
           <CardContent
             component={FlexBox}
@@ -147,18 +180,19 @@ const AboutUs = () => {
               width: "15%",
             }}
           >
-            <SubheaderSmall variant="h2" sx={{
-              borderBottom: 2,
-              borderColor: "brown.400",
-              color: "brown.700"
-
-            }}>
+            <SubheaderSmall
+              variant="h2"
+              sx={{
+                borderBottom: 2,
+                borderColor: "brown.400",
+                color: "brown.700",
+              }}
+            >
               OYEN
             </SubheaderSmall>
             <H6 color="brown.300">LOCATION</H6>
           </CardContent>
         </InfoBox>
-
       </Grid>
     </FlexBox>
   );

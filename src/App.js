@@ -7,7 +7,7 @@ import SignIn from "./pages/SignIn/SignIn";
 import Checkout from "./pages/Checkout/Checkout";
 import SiteHeader from "./components/global/SiteHeader/SiteHeader";
 import Footer from "./components/global/Footer/Footer";
-import About from "./pages/About/About";
+import About from "./pages/About";
 import Confirmation from "./pages/Confirmation/Confirmation";
 import AgeModal from "./components/AgeModal/AgeModal";
 import Login from "./pages/Login/Login";
