@@ -1,4 +1,3 @@
-import React from "react";
 import "./_Searchbar.scss";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";

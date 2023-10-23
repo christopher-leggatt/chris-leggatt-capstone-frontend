@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { apiSlice } from "./apiSlice";
 import api from "./api";
 
 const initialState = {
@@ -9,52 +10,52 @@ const initialState = {
 
 // Thunks
 
-export const getProducts = createAsyncThunk(
-  "getProducts",
-  async () => {
-    try {
-      const response = await api.get("/products");
-      const { data } = response;
-      console.log(response.data);
-      return data;
+// export const getProducts = createAsyncThunk(
+//   "getProducts",
+//   async () => {
+//     try {
+//       const response = await api.get("/products");
+//       const { data } = response;
+//       console.log(response.data);
+//       return data;
 
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
-    }
-  }
-);
+//     } catch (error) {
+//       console.error("Error fetching products:", error);
+//       throw error;
+//     }
+//   }
+// );
 
-export const getCategorizedProducts = createAsyncThunk(
-  "getCategorizedProducts",
+// export const getCategorizedProducts = createAsyncThunk(
+//   "getCategorizedProducts",
 
-  async (category) => {
-    try {
-      const response = await api.get(`/products/category/${category}`);
-      const { data } = response;
-      console.log(response.data);
-      return data;
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
-    }
-  }
-);
+//   async (category) => {
+//     try {
+//       const response = await api.get(`/products/category/${category}`);
+//       const { data } = response;
+//       console.log(response.data);
+//       return data;
+//     } catch (error) {
+//       console.error("Error fetching products:", error);
+//       throw error;
+//     }
+//   }
+// );
 
-export const getCurrentProduct = createAsyncThunk(
-  "getCurrentProduct",
+// export const getCurrentProduct = createAsyncThunk(
+//   "getCurrentProduct",
 
-  async (id) => {
-    try {
-      const response = await api.get(`/products/${id}`);
-      const { data } = response;
-      return data;
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
-    }
-  }
-);
+//   async (id) => {
+//     try {
+//       const response = await api.get(`/products/${id}`);
+//       const { data } = response;
+//       return data;
+//     } catch (error) {
+//       console.error("Error fetching products:", error);
+//       throw error;
+//     }
+//   }
+// );
 
 export const createProduct = createAsyncThunk(
   "createProduct",
@@ -102,23 +103,29 @@ const storeSlice = createSlice({
   name: "products",
   // initialState: { products: [] },
   initialState,
-  reducers: {},
-  extraReducers: {
-    [getProducts.fulfilled]: (state, action) => {
+  reducers: (builder) => {
+    builder.addCase(apiSlice.endpoints.getProducts.fulfilled, (state, action) => {
       state.products = action.payload;
-      // return action.payload;
-    },
-    [getCategorizedProducts.fulfilled]: (state, action) => {
+    });
+    builder.addCase(apiSlice.endpoints.getCategorizedProducts.fulfilled, (state, action) => {
       state.categorizedProducts = action.payload;
-      // return action.payload;
-    },
-    [getCurrentProduct.fulfilled]: (state, action) => {
+    });
+    builder.addCase(apiSlice.endpoints.getCurrentProduct.fulfilled, (state, action) => {
       state.currentProduct = action.payload[0];
-      // return action.payload;
-    },
+    });
+
+  },  extraReducers: {
+  //   [getProducts.fulfilled]: (state, action) => {
+  //     state.products = action.payload;
+  //   },
+  //   [getCategorizedProducts.fulfilled]: (state, action) => {
+  //     state.categorizedProducts = action.payload;
+  //   },
+  //   [getCurrentProduct.fulfilled]: (state, action) => {
+  //     state.currentProduct = action.payload[0];
+  //  },
     [createProduct.fulfilled]: (state, action) => {
       state.push(action.payload);
-      // return action.payload;
     },
     [editProduct.fulfilled]: (state, action) => {
       const index = state.findIndex(
@@ -127,14 +134,12 @@ const storeSlice = createSlice({
       if (index !== -1) {
         state[index] = action.payload;
       }
-      // return action.payload;
     },
     [deleteProduct.fulfilled]: (state, action) => {
       const index = state.products.findIndex((product) => product.id === action.payload);
       if (index !== -1) {
         state.splice(index, 1);
       }
-      // return action.payload;
     },
   },
 });

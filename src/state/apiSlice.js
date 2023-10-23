@@ -1,20 +1,22 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "./authSlice";
-import api from './api';
+import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_BACKEND_URL;
 const path = "/auth/login";
+const api = axios.create({
+  baseURL: process.env.REACT_APP_BACKEND_URL,
+});
 
-const baseQuery = async ({ baseUrl, path, method, body, headers }) => {
+const baseQuery = async ({ url, method, body, headers }) => {
   try {
     const response = await api({
-      url: baseUrl + path,
+      url,
       method,
-      data: body,
+      body,
       headers,
       withCredentials: true,
     });
-    return { data: response.data };
+    return(response.data);
   } catch (error) {
     return { error: error.response.data };
   }
@@ -52,5 +54,32 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
   tagTypes: ["User"],
-  endpoints: (builder) => ({}),
+  endpoints: (builder) => ({
+
+    createOrder: builder.mutation({
+      query: (order) => ({
+        url: "/orders",
+        method: "POST",
+        body: order,
+      }),
+    }),
+    getProducts: builder.query({
+      query: () => ({
+        url: "/products",
+        method: "GET",
+      }),
+    }),
+    getCategorizedProducts: builder.query({
+      query: (category) => ({
+        url: `/products/category/${category}`,
+        method: "GET",
+      }),
+    }),
+    getCurrentProduct: builder.query({
+      query: (id) => ({
+        url: `/products/${id}`,
+        method: "POST",
+      }),
+    }),
+  }),
 });
