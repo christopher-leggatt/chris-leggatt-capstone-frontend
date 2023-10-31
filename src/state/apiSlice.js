@@ -1,11 +1,18 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "./authSlice";
-import api from './api';
+import axios from "axios";
+import api from "./api";
 
 const baseUrl = process.env.REACT_APP_BACKEND_URL;
 const path = "/auth/login";
 
-const baseQuery = async ({ baseUrl, path, method, body, headers }) => {
+const baseQuery = async ({
+  baseUrl,
+  path,
+  method,
+  body,
+  headers,
+}) => {
   try {
     const response = await api({
       url: baseUrl + path,
@@ -14,7 +21,7 @@ const baseQuery = async ({ baseUrl, path, method, body, headers }) => {
       headers,
       withCredentials: true,
     });
-    return { data: response.data };
+    return {data: response.data};
   } catch (error) {
     return { error: error.response.data };
   }
@@ -31,11 +38,12 @@ const prepareHeaders = (headers, { getState }) => {
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args);
 
-  if (result?.error?.status === 403) {
+  if (args.authRequired && result?.error?.status === 403) {
     const refreshResult = await baseQuery({
       url: "/auth/refresh",
       method: "GET",
       headers: prepareHeaders({}, api.getState()),
+      authRequired: true,
     });
 
     if (refreshResult?.data) {

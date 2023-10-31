@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { apiSlice } from "./apiSlice";
 import api from "./api";
 
 const initialState = {
@@ -9,21 +10,17 @@ const initialState = {
 
 // Thunks
 
-export const getProducts = createAsyncThunk(
-  "getProducts",
-  async () => {
-    try {
-      const response = await api.get("/products");
-      const { data } = response;
-      console.log(response.data);
-      return data;
-
-    } catch (error) {
-      console.error("Error fetching products:", error);
-      throw error;
-    }
+export const getProducts = createAsyncThunk("getProducts", async () => {
+  try {
+    const response = await api.get("/products");
+    const { data } = response;
+    console.log(response.data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
   }
-);
+});
 
 export const getCategorizedProducts = createAsyncThunk(
   "getCategorizedProducts",
@@ -100,25 +97,20 @@ export const deleteProduct = createAsyncThunk(
 
 const storeSlice = createSlice({
   name: "products",
-  // initialState: { products: [] },
   initialState,
   reducers: {},
   extraReducers: {
     [getProducts.fulfilled]: (state, action) => {
       state.products = action.payload;
-      // return action.payload;
     },
     [getCategorizedProducts.fulfilled]: (state, action) => {
       state.categorizedProducts = action.payload;
-      // return action.payload;
     },
     [getCurrentProduct.fulfilled]: (state, action) => {
       state.currentProduct = action.payload[0];
-      // return action.payload;
     },
     [createProduct.fulfilled]: (state, action) => {
       state.push(action.payload);
-      // return action.payload;
     },
     [editProduct.fulfilled]: (state, action) => {
       const index = state.findIndex(
@@ -127,14 +119,14 @@ const storeSlice = createSlice({
       if (index !== -1) {
         state[index] = action.payload;
       }
-      // return action.payload;
     },
     [deleteProduct.fulfilled]: (state, action) => {
-      const index = state.products.findIndex((product) => product.id === action.payload);
+      const index = state.products.findIndex(
+        (product) => product.id === action.payload
+      );
       if (index !== -1) {
         state.splice(index, 1);
       }
-      // return action.payload;
     },
   },
 });
