@@ -1,18 +1,16 @@
 import "./App.scss";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import Home from "./pages/Home/Home";
-import Shop from "./pages/Shop/Shop";
-import SignIn from "./pages/SignIn/SignIn";
-import Checkout from "./pages/Checkout/Checkout";
-import SiteHeader from "./components/global/SiteHeader/SiteHeader";
-import Footer from "./components/global/Footer/Footer";
-import About from "./pages/About";
-import Confirmation from "./pages/Confirmation/Confirmation";
-import AgeModal from "./components/AgeModal/AgeModal";
-import Login from "./pages/Login/Login";
-import Dashboard from "./pages/Dashboard/Dashboard";
-
+import Home from './scenes/Home';
+import Shop from './scenes/Shop';
+import Checkout from "./scenes/Checkout";
+import Navbar from "./scenes/global/Navbar/Navbar";
+import Footer from "./scenes/global/Footer/Footer";
+import About from "./scenes/About";
+import Confirmation from "./scenes/Confirmation";
+import AgeModal from "./scenes/global/AgeModal/AgeModal";
+import Dashboard from "./scenes/Dashboard";
+import Login from "./scenes/Login";
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -36,14 +34,26 @@ function App() {
 
 function Content() {
   const { pathname } = useLocation();
-  const [verified, setVerified] = useState(true);
+  const [ageVerified, setAgeVerified] = useState(false);
+
+  useEffect(() => {
+    const ageVerifiedLocal = localStorage.getItem("ageVerified");
+    if (ageVerifiedLocal) {
+      setAgeVerified(true);
+    }
+  }, []);
+
+  const handleAgeVerification = () => {
+    setAgeVerified(true);
+    localStorage.setItem('ageVerified', 'true');
+  };
 
   return (
     <>
-      {!verified && pathname !== "/checkout/success" && <AgeModal onVerified={() => setVerified(true)} />}
+      {!ageVerified && <AgeModal onVerified={handleAgeVerification} />}
       <ScrollToTop />
       <main>
-        <SiteHeader />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Shop />} />

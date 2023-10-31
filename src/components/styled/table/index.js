@@ -3,7 +3,7 @@ import {
   TableCell,
   TableRow,
 } from "@mui/material";
-import FlexBox from "../../flexBox/FlexBox";
+import { FlexBox } from '../../flex_box';
 
 export const StyledTableCell = styled(TableCell)(({ theme }) => ({
   fontSize: 13,

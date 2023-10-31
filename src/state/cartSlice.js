@@ -8,10 +8,7 @@ const initialState = {
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
-  reducers: {
-    // setProducts: (state, action) => {
-    //   state.items = action.payload;
-    // },
+  reducers: {    
 
     addToCart: (state, action) => {
       const foundProduct = state?.cart?.find(
