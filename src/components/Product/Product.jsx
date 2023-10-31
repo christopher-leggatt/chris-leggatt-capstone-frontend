@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { IconButton, Box, Typography, useTheme, Button } from "@mui/material";
 import { Add, Remove } from "@mui/icons-material";
-import { addToCart } from "../../state";
+import { addToCart } from "../../state/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { formatPrice } from "../../utils";
 
@@ -26,6 +26,7 @@ const Product = ({ product }) => {
         flexDirection: "column",
         justifyContent: "space-between",
         transition: "0.3s",
+        cursor: "pointer",
         "&:hover": {
           boxShadow: "0 8px 16px rgba(0, 0, 0, 0.1)",
           transform: "translateY(-5px)",
@@ -121,7 +122,7 @@ const Product = ({ product }) => {
           <Typography
             className="product__name"
             fontWeight="bold"
-            variant="bodyCopyRegular"
+            variant="bodycopy"
             sx={{
               display: "-webkit-box",
               overflow: "hidden",
