@@ -1,5 +1,4 @@
 import "./_CartDrawer.scss";
-import React from "react";
 import {
   Avatar,
   Box,
@@ -20,7 +19,7 @@ import {
   removeFromCart,
   addToCart,
   setIsCartOpen,
-} from "../../state/cartSlice";
+} from "../../../state/cartSlice";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
@@ -30,7 +29,7 @@ import {
   CheckoutButton,
   ItemQuantityBox,
 } from "./CartDrawerStyles";
-import { formatPrice } from "../../utils";
+import { formatPrice } from "../../../utils";
 
 const FlexBox = styled(Box)`
   display: flex;

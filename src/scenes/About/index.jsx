@@ -7,13 +7,12 @@ import {
   SubheaderMedium,
   SubheaderSmall,
   H6,
-} from "../../components/Typography/Typography";
+} from "../../components/typography";
 import owner1 from "../../assets/images/owner1.png";
 import owner2 from "../../assets/images/owner2.png";
 import location1 from "../../assets/images/location1.png";
 import location2 from "../../assets/images/location2.png";
-import FlexBox from "../../components/flexBox/FlexBox";
-import FlexBetween from "../../components/flexBox/FlexBetween";
+import { FlexBox, FlexBetween } from '../../components/flex_box';
 
 const AboutUs = () => {
   const handleMouseOver = (e) => {

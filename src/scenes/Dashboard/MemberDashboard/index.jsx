@@ -7,20 +7,20 @@ import {
   Typography,
   useMediaQuery
 } from "@mui/material";
-import MemberNavigation from "../../../components/navigation/MemberNavigation";
+import MemberNavigation from "../navigation/MemberNavigation";
 import { useSelector } from "react-redux";
-import MemberDashboardHeader from "../../components/dashboard/MemberDashboardHeader";
+import MemberDashboardHeader from "./MemberDashboardHeader";
 import useAuth from "../../../hooks/useAuth";
 import api from "../../../state/api";
 import { useState, useEffect } from "react";
 import { Person } from "@mui/icons-material";
-import FlexBox from "../../../components/flex_box/FlexBox";
-import FlexBetween from "../../../components/flex_box/FlexBetween";
+import { FlexBox, FlexBetween } from '../../../components/flex_box';
+
 import {
   SubheaderMedium,
   H5,
   SubheaderExtraSmall,
-} from "../../../components/Typography/Typography";
+} from "../../../components/typography";
 import {
   infoList,
   TableRowItem,

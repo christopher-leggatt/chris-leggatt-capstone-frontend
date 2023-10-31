@@ -7,8 +7,7 @@ import { ReactComponent as Logo } from "../../assets/logo/convenient_cannabis_lo
 import SiteTextField from "./SignInField";
 import SocialButtons from "./SocialButtons";
 import EyeToggleButton from "./EyeToggleButton";
-import FlexBox from "../../components/flex_box/FlexBox";
-import FlexRowCenter from "../../components/flex_box/FlexRowCenter";
+import { FlexBox, FlexRowCenter } from "../../components/flex_box";
 import { useDispatch } from "react-redux";
 import {
   Wrapper,

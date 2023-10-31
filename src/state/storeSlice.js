@@ -10,52 +10,48 @@ const initialState = {
 
 // Thunks
 
-// export const getProducts = createAsyncThunk(
-//   "getProducts",
-//   async () => {
-//     try {
-//       const response = await api.get("/products");
-//       const { data } = response;
-//       console.log(response.data);
-//       return data;
+export const getProducts = createAsyncThunk("getProducts", async () => {
+  try {
+    const response = await api.get("/products");
+    const { data } = response;
+    console.log(response.data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching products:", error);
+    throw error;
+  }
+});
 
-//     } catch (error) {
-//       console.error("Error fetching products:", error);
-//       throw error;
-//     }
-//   }
-// );
+export const getCategorizedProducts = createAsyncThunk(
+  "getCategorizedProducts",
 
-// export const getCategorizedProducts = createAsyncThunk(
-//   "getCategorizedProducts",
+  async (category) => {
+    try {
+      const response = await api.get(`/products/category/${category}`);
+      const { data } = response;
+      console.log(response.data);
+      return data;
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      throw error;
+    }
+  }
+);
 
-//   async (category) => {
-//     try {
-//       const response = await api.get(`/products/category/${category}`);
-//       const { data } = response;
-//       console.log(response.data);
-//       return data;
-//     } catch (error) {
-//       console.error("Error fetching products:", error);
-//       throw error;
-//     }
-//   }
-// );
+export const getCurrentProduct = createAsyncThunk(
+  "getCurrentProduct",
 
-// export const getCurrentProduct = createAsyncThunk(
-//   "getCurrentProduct",
-
-//   async (id) => {
-//     try {
-//       const response = await api.get(`/products/${id}`);
-//       const { data } = response;
-//       return data;
-//     } catch (error) {
-//       console.error("Error fetching products:", error);
-//       throw error;
-//     }
-//   }
-// );
+  async (id) => {
+    try {
+      const response = await api.get(`/products/${id}`);
+      const { data } = response;
+      return data;
+    } catch (error) {
+      console.error("Error fetching products:", error);
+      throw error;
+    }
+  }
+);
 
 export const createProduct = createAsyncThunk(
   "createProduct",
@@ -101,29 +97,18 @@ export const deleteProduct = createAsyncThunk(
 
 const storeSlice = createSlice({
   name: "products",
-  // initialState: { products: [] },
   initialState,
-  reducers: (builder) => {
-    builder.addCase(apiSlice.endpoints.getProducts.fulfilled, (state, action) => {
+  reducers: {},
+  extraReducers: {
+    [getProducts.fulfilled]: (state, action) => {
       state.products = action.payload;
-    });
-    builder.addCase(apiSlice.endpoints.getCategorizedProducts.fulfilled, (state, action) => {
+    },
+    [getCategorizedProducts.fulfilled]: (state, action) => {
       state.categorizedProducts = action.payload;
-    });
-    builder.addCase(apiSlice.endpoints.getCurrentProduct.fulfilled, (state, action) => {
+    },
+    [getCurrentProduct.fulfilled]: (state, action) => {
       state.currentProduct = action.payload[0];
-    });
-
-  },  extraReducers: {
-  //   [getProducts.fulfilled]: (state, action) => {
-  //     state.products = action.payload;
-  //   },
-  //   [getCategorizedProducts.fulfilled]: (state, action) => {
-  //     state.categorizedProducts = action.payload;
-  //   },
-  //   [getCurrentProduct.fulfilled]: (state, action) => {
-  //     state.currentProduct = action.payload[0];
-  //  },
+    },
     [createProduct.fulfilled]: (state, action) => {
       state.push(action.payload);
     },
@@ -136,7 +121,9 @@ const storeSlice = createSlice({
       }
     },
     [deleteProduct.fulfilled]: (state, action) => {
-      const index = state.products.findIndex((product) => product.id === action.payload);
+      const index = state.products.findIndex(
+        (product) => product.id === action.payload
+      );
       if (index !== -1) {
         state.splice(index, 1);
       }

@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import { Box, Button, Divider } from "@mui/material";
 import { FacebookRounded, Google } from "@mui/icons-material";
-import FlexBox from "../flex_box/FlexBox";
+import { FlexBox } from "../../components/flex_box";
 
 const SocialButtons = (props) => {
   return (

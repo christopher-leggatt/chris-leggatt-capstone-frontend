@@ -12,7 +12,10 @@ import { Add, Remove } from "@mui/icons-material";
 import { addToCart } from "../../state/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";
-import { getCategorizedProducts, getCurrentProduct } from '../../state/storeSlice';
+import {
+  getCategorizedProducts,
+  getCurrentProduct,
+} from "../../state/storeSlice";
 import { formatPrice } from "../../utils";
 import RelatedProducts from "./RelatedProducts";
 
@@ -131,7 +134,8 @@ const ProductDetails = () => {
               size="medium"
               onClick={() =>
                 dispatch(addToCart({ product: { ...product, count } }))
-              }            >
+              }
+            >
               Add to Cart
             </Button>
           </Box>
@@ -165,8 +169,10 @@ const ProductDetails = () => {
           </Typography>
         </Box>
       </Box>
-      <RelatedProducts categorizedProducts={categorizedProducts} product={product}/>
-
+      <RelatedProducts
+        categorizedProducts={categorizedProducts}
+        product={product}
+      />
     </Box>
   );
 };

@@ -1,5 +1,5 @@
-import { SubheaderExtraSmall } from "../../../components/Typography/Typography";
-import FlexBox from "../../../components/flex_box/FlexBox";
+import { SubheaderExtraSmall } from "../../../components/typography";
+import { FlexBox } from '../../../components/flex_box';
 import { Button } from "@mui/material";
 import { Link } from "react-router-dom";
 

@@ -13,8 +13,8 @@ import {
   stockOutItems,
 } from "./AdminDashboardUtils";
 import { BodyWrapper, InnerWrapper } from "./AdminDashboardStyled";
-import DashboardSidebar from "../../components/dashboard/DashboardSidebar/DashboardSidebar";
-import DashboardNavbar from "../../components/dashboard/DashboardNavbar/DashboardNavbar";
+import DashboardSidebar from "../DashboardSidebar/DashboardSidebar";
+import DashboardNavbar from "../DashboardNavbar/DashboardNavbar";
 
 const AdminDashboard = () => {
   //   const { userId, role, status, isAdmin, isMember, isGuest } = useAuth;

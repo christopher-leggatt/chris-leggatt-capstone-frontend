@@ -8,15 +8,14 @@ import {
   TableBody,
 } from "@mui/material";
 import { ArrowDropUp, ArrowDropDown, Done } from "@mui/icons-material";
-import { ReactComponent as Welcome } from "../../assets/icons/welcome.svg";
+import { ReactComponent as Welcome } from "../../../assets/icons/welcome.svg";
 import {
   SubheaderMedium,
   H5,
   BodyCopy,
   H6,
 } from "../../../components/typography";
-import FlexBetween from "../../../components/flex_box/FlexBetween";
-import FlexBox from "../../../components/flex_box/FlexBox";
+import { FlexBox, FlexBetween } from '../../../components/flex_box';
 import useMuiTable from "../../../hooks/useMuiTable";
 import {
   StyledTableCell,

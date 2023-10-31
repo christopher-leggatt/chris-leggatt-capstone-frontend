@@ -71,8 +71,8 @@ export const handleLoginFormSubmit = async (values, dispatch, navigate) => {
       password: values.password,
     });
 
-    if (response.data.token) {
-      dispatch(setCredentials({ accessToken: response.data.token }));
+    if (response.data.accessToken) {
+      dispatch(setCredentials({ accessToken: response.data.accessToken }));
 
       navigate("/dashboard");
     }

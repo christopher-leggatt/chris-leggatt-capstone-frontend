@@ -2,7 +2,7 @@ import "./_AgeModal.scss";
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { ReactComponent as LogoIcon } from "../../assets/logo/convenient_cannabis_logo.svg";
+import { ReactComponent as LogoIcon } from "../../../assets/logo/convenient_cannabis_logo.svg";
 import { Button } from "@mui/material";
 
 const AgeModal = ({ onVerified }) => {

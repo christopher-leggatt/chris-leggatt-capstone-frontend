@@ -69,7 +69,12 @@ const Checkout = () => {
     };
 
     try {
-      const order = await dispatch(createOrder(requestBody)).unwrap();
+      const orderResponse = await dispatch(createOrder(requestBody)).unwrap();
+      if (orderResponse.error) {
+        console.error("Error processing order:", orderResponse.error);
+        return;
+      }
+      const order = orderResponse.data;
       await stripe.redirectToCheckout({
         sessionId: order.id,
       });

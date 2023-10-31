@@ -9,7 +9,7 @@ import {
   ListIconWrapper,
   //   ChevronLeftIcon,
   ChevronRightIcon,
-} from "../../styled/sidebar";
+} from "../../../components/styled/sidebar";
 import duotone from "../../../assets/icons/duotone";
 import { HomeTwoTone, InfoTwoTone, StorefrontTwoTone } from "@mui/icons-material";
 

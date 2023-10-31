@@ -1,22 +1,27 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from "./authSlice";
 import axios from "axios";
+import api from "./api";
 
+const baseUrl = process.env.REACT_APP_BACKEND_URL;
 const path = "/auth/login";
-const api = axios.create({
-  baseURL: process.env.REACT_APP_BACKEND_URL,
-});
 
-const baseQuery = async ({ url, method, body, headers }) => {
+const baseQuery = async ({
+  baseUrl,
+  path,
+  method,
+  body,
+  headers,
+}) => {
   try {
     const response = await api({
-      url,
+      url: baseUrl + path,
       method,
-      body,
+      data: body,
       headers,
       withCredentials: true,
     });
-    return(response.data);
+    return {data: response.data};
   } catch (error) {
     return { error: error.response.data };
   }
@@ -33,11 +38,12 @@ const prepareHeaders = (headers, { getState }) => {
 const baseQueryWithReauth = async (args, api, extraOptions) => {
   let result = await baseQuery(args);
 
-  if (result?.error?.status === 403) {
+  if (args.authRequired && result?.error?.status === 403) {
     const refreshResult = await baseQuery({
       url: "/auth/refresh",
       method: "GET",
       headers: prepareHeaders({}, api.getState()),
+      authRequired: true,
     });
 
     if (refreshResult?.data) {
@@ -54,32 +60,5 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   baseQuery: baseQueryWithReauth,
   tagTypes: ["User"],
-  endpoints: (builder) => ({
-
-    createOrder: builder.mutation({
-      query: (order) => ({
-        url: "/orders",
-        method: "POST",
-        body: order,
-      }),
-    }),
-    getProducts: builder.query({
-      query: () => ({
-        url: "/products",
-        method: "GET",
-      }),
-    }),
-    getCategorizedProducts: builder.query({
-      query: (category) => ({
-        url: `/products/category/${category}`,
-        method: "GET",
-      }),
-    }),
-    getCurrentProduct: builder.query({
-      query: (id) => ({
-        url: `/products/${id}`,
-        method: "POST",
-      }),
-    }),
-  }),
+  endpoints: (builder) => ({}),
 });

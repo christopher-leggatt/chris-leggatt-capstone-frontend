@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Typography } from "@mui/material";
-import FlexBox from "../flex_box/FlexBox";
+import { FlexBox } from "../../../components/flex_box";
 import { linkList, MainContainer, StyledNavLink } from "./MemberNavigationUtils";
 import { useLocation } from "react-router-dom";
 

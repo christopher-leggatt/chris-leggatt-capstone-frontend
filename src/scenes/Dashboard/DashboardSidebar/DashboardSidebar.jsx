@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Avatar, Box, useMediaQuery, SvgIcon } from "@mui/material";
 import DashboardDrawer from "../DashboardDrawer/DashboardDrawer";
 import DashboardScrollbar from "../DashboardScrollbar/DashboardScrollbar";
-import FlexBetween from "../../flexBox/FlexBetween";
+import { FlexBetween } from "../../../components/flex_box";
 import { SidebarAccordion, adminNavItems, siteNavItems } from "./DashboardSidebarUtils";
 import {
   ListLabel,
@@ -17,7 +17,7 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   ListIconWrapper,
-} from "../../styled/sidebar";
+} from "../../../components/styled/sidebar";
 import useAuth from "../../../hooks/useAuth";
 import Logo from '../../../assets/logo/logo_transparent_bg.png';
 const TOP_HEADER_AREA = 70;

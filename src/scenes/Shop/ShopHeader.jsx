@@ -1,11 +1,11 @@
 import { IconButton, AppBar, Box, Badge } from "@mui/material";
 import { ShoppingBagOutlined, Menu } from "@mui/icons-material";
 import { Link, useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Searchbar from "../../components/Searchbar/Searchbar";
-import CartDrawer from "../../components/CartDrawer/CartDrawer";
-import ShopDrawer from "../../components/ShopDrawer/ShopDrawer";
+import CartDrawer from "./CartDrawer/CartDrawer";
+import ShopDrawer from "./";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsCartOpen } from "../../state/cartSlice"; 
 

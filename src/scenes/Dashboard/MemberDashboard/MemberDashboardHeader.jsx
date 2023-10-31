@@ -1,6 +1,6 @@
 import { Box, styled } from "@mui/material";
-import { SectionHeader } from "../../../components/Typography/Typography";
-import FlexBox from "../../../components/flexBox/FlexBox";
+import { SectionHeader } from "../../../components/typography";
+import { FlexBox } from '../../../components/flex_box';
 import useWindowSize from "../../../hooks/useWindowSize";
 
 const StyledBox = styled(Box)(({ theme }) => ({

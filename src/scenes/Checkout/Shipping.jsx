@@ -1,6 +1,5 @@
-import React from "react";
 import { Box, Checkbox, FormControlLabel, Typography } from "@mui/material";
-import AddressForm from '../../components/AddressForm/AddressForm';
+import AddressForm from './AddressForm';
 import { useTheme } from "@mui/material/styles";
 
 const Shipping = ({

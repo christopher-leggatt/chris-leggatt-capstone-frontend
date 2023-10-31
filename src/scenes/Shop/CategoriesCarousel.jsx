@@ -1,6 +1,5 @@
-import React from "react";
 import Carousel from "react-material-ui-carousel";
-import CategoriesBanner from "../../components/CategoriesBanner/CategoriesBanner";
+import CategoriesBanner from "./CategoriesBanner";
 
 const CategoriesCarousel = () => {
   const categories = [

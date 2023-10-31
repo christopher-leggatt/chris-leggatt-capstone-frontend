@@ -1,5 +1,5 @@
 import { styled, CardMedia } from "@mui/material";
-import FlexBox from "../../components/flexBox/FlexBox";
+import { FlexBox } from '../../components/flex_box';
 
 const InfoImage = styled(CardMedia)({
   width: "100px",

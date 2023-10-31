@@ -1,5 +1,5 @@
 import { Button, styled, AppBar, Toolbar, InputBase } from "@mui/material";
-import FlexRowCenter from "../../flexBox/FlexRowCenter";
+import { FlexRowCenter } from '../../../components/flex_box';
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   zIndex: 11,

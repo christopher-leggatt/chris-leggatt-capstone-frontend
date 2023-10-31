@@ -1,10 +1,9 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { Box, useMediaQuery, Container } from "@mui/material";
-import Globe from '../../icons/Globe';
-import Toggle from "../../icons/Toggle";
-import AccountPopover from '../../AccountPopover/AccountPopover';
-import FlexBox from "../../flexBox/FlexBox";
-// import NotificationsPopover from "./popovers/NoficationPopover";
+import Globe from '../../../components/icons/Globe';
+import Toggle from "../../../components/icons/Toggle";
+import AccountPopover from '../../../components/AccountPopover/AccountPopover';
+import { FlexBox } from '../../../components/flex_box';
 import { Search } from "@mui/icons-material";
 import {
   DashboardNavbarRoot,

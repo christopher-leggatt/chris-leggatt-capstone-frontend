@@ -1,6 +1,6 @@
 import { ChevronLeft, ChevronRight } from "@mui/icons-material";
 import { alpha, Box, ButtonBase, styled } from "@mui/material";
-import { BodyCopy, Span } from "../../Typography/Typography"; 
+import { BodyCopy, Span } from "../../typography"; 
 
 // ===============================================================
 

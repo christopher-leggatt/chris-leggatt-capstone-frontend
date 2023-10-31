@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Avatar, Box, IconButton, Menu, MenuItem, styled } from "@mui/material";
-import { H6, SubheaderExtraSmall } from "../Typography/Typography";
+import { H6, SubheaderExtraSmall } from "../typography";
 import useAuth from "../../hooks/useAuth";
 import { useDispatch } from "react-redux";
 
