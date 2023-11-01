@@ -9,7 +9,7 @@ const HomeHero = () => {
   return (
     <section className="home-header">
       <video className="home-header__background-video" autoPlay muted>
-        <source src="http://localhost:5050/videos/convenient_cannabis.mp4" type="video/mp4" />
+        <source src={`${process.env.REACT_APP_BACKEND_URL}/videos/convenient_cannabis.mp4`} type="video/mp4" />
       </video>
       <div className="home-header__overlay-content">
         <h1 className='home-header__page-header' style={{ fontStyle: 'Newsreader Variable', color: 'theme.palette.text.primary'}} >Welcome to Convenient Cannabis</h1>
