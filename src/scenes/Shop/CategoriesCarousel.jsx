@@ -5,37 +5,37 @@ const CategoriesCarousel = () => {
   const categories = [
     {
       name: "Flower",
-      image: `${process.env.REACT_APP_BACKEND_URL}images/category_images/flower_category.jpg`,
+      image: `${process.env.REACT_APP_BACKEND_URL}/images/category_images/flower_category.jpg`,
       category_name: "flower",
     },
     {
       name: "Vaporizers",
-      image: `${process.env.REACT_APP_BACKEND_URL}images/category_images/vaporizers_category.jpg`,
+      image: `${process.env.REACT_APP_BACKEND_URL}/images/category_images/vaporizers_category.jpg`,
       category_name: "vaporizers",
     },
     {
       name: "Edibles",
-      image: `${process.env.REACT_APP_BACKEND_URL}images/category_images/edibles_category.jpg`,
+      image: `${process.env.REACT_APP_BACKEND_URL}/images/category_images/edibles_category.jpg`,
       category_name: "edibles",
     },
     {
       name: "Concentrates",
-      image: `${process.env.REACT_APP_BACKEND_URL}images/category_images/concentrates_category.jpg`,
+      image: `${process.env.REACT_APP_BACKEND_URL}/images/category_images/concentrates_category.jpg`,
       category_name: "concentrates",
     },
     {
       name: "Topicals",
-      image: `${process.env.REACT_APP_BACKEND_URL}images/category_images/topicals_category.jpg`,
+      image: `${process.env.REACT_APP_BACKEND_URL}/images/category_images/topicals_category.jpg`,
       category_name: "topicals",
     },
     {
       name: "Prerolls",
-      image: `${process.env.REACT_APP_BACKEND_URL}images/category_images/prerolls_category.jpg`,
+      image: `${process.env.REACT_APP_BACKEND_URL}/images/category_images/prerolls_category.jpg`,
       category_name: "prerolls",
     },
     {
       name: "Seeds",
-      image: `${process.env.REACT_APP_BACKEND_URL}images/category_images/seeds_category.jpg`,
+      image: `${process.env.REACT_APP_BACKEND_URL}/images/category_images/seeds_category.jpg`,
       category_name: "seeds",
     },
   ];
